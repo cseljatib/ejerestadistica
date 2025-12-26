@@ -1,0 +1,33 @@
+* Sitio donde se almacenan los ejercicios del libro
+
+En este repositorio se almacenan los scripts de [[https://devtools.r-lib.org/][R]] de los ejercicios estipulados en el libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] de la [[https://uchile.cl][Universidad de Chile]].
+
+
+Para el correcto uso de los scripts, es necesario tener instalados los paquetes =datana= y =biometrics= en su versión de R. 
+
+Por lo tanto, debe primero proceder como sigue
+
+  #+begin_src R
+  install.packages("datana")
+  install.packages("biometrics") 
+  #+end_src
+  
+ Para *verificar* que ambos paquetes estan correctamente instalados, ejecute:
+
+  #+begin_src R
+  library(datana)
+  library(biometrics)
+  #+end_src
+y para verificar la versión del paquete, puede emplear la función =packageVersion()= como sigue
+#+begin_src R
+packageVersion("datana")
+#+end_src
+
+Cita del paquete
+#+begin_src R
+citation("datana")
+#+end_src
+
+** Sugerencias/errores
+En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
+
