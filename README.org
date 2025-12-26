@@ -28,6 +28,9 @@ Cita del paquete
 citation("datana")
 #+end_src
 
+** Es importante destacar que las versiones más recientes de los paquetes antes mencionados se encuentran en el siguiente 
+[[https://github.com/cseljatib/labPackages][web]]
+
 ** Sugerencias/errores
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
 
