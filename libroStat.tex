@@ -1,0 +1,81 @@
+%%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%+ Project: libro of Stat                         %
+%%- File: "libroStat.Rnw"                      %
+%% Folder path:                                  %
+%%                                               %
+%%? This file requires several independent files  
+%% and also, several figures and tables (not listed so far)
+%% Last changes: may26, 2025
+%%> Author: Christian E. Salas Eljatib
+%%* E-mail: cseljatib@gmail.com
+%%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\PassOptionsToPackage{table}{xcolor}
+\documentclass[12pt,letterpaper,table]{book}
+%sweavetexOrga('libroStat')
+%Stangle('libroStat.Rnw')
+
+%% tareas
+%% - tener boxes para "historia" y para funciones de "r" o cosas asi.
+%% guardar los .rdata en carpeta especifica
+%%% Calling packages %%%%%%%%%%%%%%%%%%%
+%\input{callPackages}
+\input{defiFiles/01callPackagesAca}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%Sweave details~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{Sweave}  % Get this from your R installation
+\usepackage[noae]{Sweave}   % Get this from your R
+%\SweaveOpts{pdf=TRUE}
+ %%esto asume figuras automaticas
+%% producidas con el prefijo "x-"
+%\setkeys{Gin}{width=\textwidth}
+%\setkeys{Gin}{width=0.5\textwidth}
+
+%\SweaveOpts{echo=FALSE,pdf=TRUE,eval=TRUE,results=HIDE}
+%\SweaveOpts{width=3, height=1.0}
+%\SweaveOpts{concordance=TRUE}%,cache=TRUE}
+
+\input{defiFiles/02preambleBook.tex}
+
+\begin{document} 
+%\SweaveOpts{concordance=TRUE}
+
+%%%-----antes y despues ecuaciones-------
+%\setlength{\abovedisplayskip}{1.5pt}
+%\setlength{\belowdisplayskip}{1.8pt}
+
+%%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%+ Project: libro of Stat                       %
+%%- File: "05sweavePreamble.Rnw"                 %
+%%* About: Sweave details
+%%                                               %
+%%? This file also call other .r files  
+%% Last changes: may26, 2025
+%% Author: Christian E. Salas Eljatib
+%%* E-mail: cseljatib@gmail.com
+%%!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%ancho de los outputs de R que queden dentro de LaTeX
+
+%Removing continuation prompts
+
+%Customizing graphics
+%%% ---End of: Sweave details-------
+
+
+
+\input{defiFiles/06onCover.tex}
+
+
+
+
+%%! CONCEPTUALIZACION 
+\part{Conceptualizaci\'on} \label{part:concep}
+\chapter*{Introducci\'on a \artnamepartebook} 
+\input{chapters/introConcep}
+
+%%* Capitulo sobre poblacion, estadistico y variables
+\chapter{Poblaci\'on y muestra} \label{sec:pobmue}
+%\SweaveInput{estBasica.Rnw}
