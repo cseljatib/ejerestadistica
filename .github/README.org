@@ -1,4 +1,4 @@
-* Sitio donde se almacenan los ejercicios del libro
+* Sitio con material complementario del _libro Estadística Aplicada e Inferencial_
 
 En este repositorio se almacenan los scripts de [[https://devtools.r-lib.org/][R]] de los ejercicios estipulados en el libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] de la [[https://uchile.cl][Universidad de Chile]].
 
