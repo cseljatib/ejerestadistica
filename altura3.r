@@ -1,16 +1,17 @@
-##! Script: "altura3.r"                                           /
-##- Sobre:  Ajuste de tres modelos lineales simple (RLS)         /
+##! Script: "altura3.r"                                            /
+##- Sobre:  Ajuste de tres modelos lineales simple (RLS), con     /
+##-   transformaciones en la variable predictora.                 /
 ##+ Detalles:  Emplea estimador de minimos cuadrados.           /
 ##* Ejemplo: Datos de altura-diametro (data=idahohd2).         /
 ##? Mas detalles: Entre otras cosas, el este ejercicio se:    / 
 ## + calculan valores ajustados y residuales.                /
 ## + representa sigma.hat.e en porcentaje.                  /
 ## + crea grafico con valores esperados vs diametro para   /
-## los dos modelos.                                             /
+## los tres modelos.                                      /
 ##! -----------------------------------------------------/ 
 ##                                                      /
 ##> Profesor: Christian Salas Eljatib                  /
-## E-mail: christian.salas AT uchile DOT cl           /
+##? E-mail: christian.salas AT uchile DOT cl          /
 ## Web: https://eljatib.com                          /
 ##!=================================================/
 
@@ -39,9 +40,12 @@ hist(df$dap)
 ##-Dispersion
 plot(atot~dap, data=df)
 
+##- Grafico dispersion con distribucion marginal
+xyhist(x=df$dap,y=df$atot)
+
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##! III. Ajuste del modelo 1
-##  h=b0+b1*d
+##  h_i=beta_0+beta_1(d_i)+varepsilon_i
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 mod1<- lm(atot~dap, data=df)
 summary(mod1)
@@ -52,16 +56,24 @@ coef(mod1)[1]
 b0.hat<-coef(mod1)[1]
 b1.hat<-coef(mod1)[2]
 
+##- ========= 
+##? Como obtener el valor ajustado para el modelo 1
+# Para la variable respuesta-biometrica de interes, i.e., altura 
+#*1) para un par de valores de la variable predictora-biometrica
+d.play<-30:35;d.play
+b0.hat + b1.hat * (1/d.play)
+#*2) para todos los valores a evaluar de la variable predictora-biometrica
+d.test <- 10:110
+h.mod1 <- b0.hat + b1.hat * (1/d.test)
+
+
 #grafico de comportamiento-modelo 1
-d.fake <- 10:110
-length(d.fake)
-h.ajumod1 <- b0.hat + b1.hat * d.fake
 plot(atot~dap, data=df)
-lines(d.fake, h.ajumod1, col="red",lwd=2)
+lines(d.test, h.mod1, col="red",lwd=2)
 
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##! IV. Ajuste del modelo 2
-##  h=b0+b1*(1/d)
+##  h_i=beta_0+beta_1(1/d_i)+varepsilon_i
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##creando la variable X necesaria para el modelo 2
 df$inv.d <- 1/df$dap
@@ -72,15 +84,23 @@ b0.hat2<-coef(mod2)[1]
 b1.hat2<-coef(mod2)[2]
 b0.hat2
 b1.hat2
-h.ajumod2 <- b0.hat2 + b1.hat2 * (1/d.fake)
+
+##- ========= 
+##? Como obtener el valor ajustado para el modelo 2
+# Para la variable respuesta-biometrica de interes, i.e., altura 
+#*1) para un par de valores de la variable predictora-biometrica
+d.play
+b0.hat + b1.hat * (1/d.play)
+#*2) para todos los valores a evaluar de la variable predictora-biometrica
+h.mod2 <- b0.hat2 + b1.hat2 * (1/d.test)
 
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##! V. Ajuste del modelo 3
-## ln(h)=b0+b1*e^(-0.03d)
+## ln(h_i)=beta_0+beta_1(e^(-0.03d_i))+varepsilon_i
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##- Creando la variable Y necesaria para el modelo 3
+##- Creando la variable Y necesaria para el modelo
 df$ln.h<-log(df$atot)
-##creando la variable X necesaria para el modelo 3
+##creando la variable X necesaria para el modelo
 df$exp.d<-exp(-0.03*df$dap)
 plot(ln.h~exp.d, data=df)
 
@@ -91,16 +111,29 @@ b0.hat3<-coef(mod3)[1]
 b1.hat3<-coef(mod3)[2]
 b0.hat3
 b1.hat3
-h.ajumod3 <- exp(b0.hat3 + b1.hat3 * exp(-0.03*d.fake))
+
+
+##- ========= 
+##? Como obtener el valor ajustado para el modelo 3
+# Para la variable respuesta-biometrica de interes, i.e., altura 
+#*1) para un par de valores de la variable predictora-biometrica
+d.play
+b0.hat3+ b1.hat3 * (exp(-0.03*d.play))
+# en que unidad esta la variable respuesta del modelo
+## estadistico ajustado?.
+exp(b0.hat3+ b1.hat3 * (exp(-0.03*d.play)))
+
+#*2) para todos los valores a evaluar de la variable predictora-biometrica
+h.mod3 <- exp(b0.hat3 + b1.hat3 * exp(-0.03*d.test))
 
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##! VI. Grafico de comportamiento para los tres modelos ajustados
 ##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 plot(atot~dap, data=df,xlab="Diametro (cm)",
      ylab="Altura (m)", las=1, col="gray")
-lines(d.fake, h.ajumod1, col="red", lwd=2, lty=1)
-lines(d.fake, h.ajumod2, col="blue", lwd=2, lty=2)
-lines(d.fake, h.ajumod3, col="black", lwd=2, lty=1)
+lines(d.test, h.mod1, col="red", lwd=2, lty=1)
+lines(d.test, h.mod2, col="blue", lwd=2, lty=2)
+lines(d.test, h.mod3, col="black", lwd=2, lty=1)
 
 legend("bottomright",c("Mod1","Mod2","Mod3"), title="Modelo",
        col = c("red","blue","black"), lty=c(1,2,1), lwd=c(2,2,2))
@@ -112,13 +145,14 @@ legend("bottomright",c("Mod1","Mod2","Mod3"), title="Modelo",
 #dev.print(pdf,"compara3ModelosHd.pdf") #
 #dev.off()
 
-##- ===================================
-##? Tareas sugeridas:
-## 1. Calcule estadisticos de prediccion para los modelos 1, 2 y 3
-## 2. Prepare un cuadro en una hoja a mano, y escriba los
-## estadisticos anteriores para cada modelo (cada fila un modelo).
-## 3. compare los modelos, basado en los estadisticos calculados.
-##- ===================================
+##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##! Para seguir ejercitando/estudiando:
+##+ 1. Escriba, en una hoja a mano, cada modelo estadistico
+## poblacional que se ha ajustado en este script.
+##+ 2. Prepare un cuadro en una hoja a mano, y escriba los
+## parametros estimados para cada modelo (cada fila un modelo).
+##+ 3. Compare los modelos, basado en los estadisticos calculados.
+##* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 #>╔═════════════════╗
