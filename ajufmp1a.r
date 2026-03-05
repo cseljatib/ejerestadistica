@@ -1,13 +1,15 @@
-## Script: "fdpaju4.r"                     /
-## Sobre:  ajuste fdp de Poisson.                 /
-## Emplea estimacion por maxima verosimilitud    /
-#-----------------------------------------------/ 
-##
-## Profesor: Christian Salas Eljatib
-## E-mail: cseljatib AT gmail DOT com
-## Web: https://eljatib.com
-#======================================
-
+##! Script: "ajufmp1a.r"                                            /
+##- Sobre:  Ajuste de una funcion de masa de probabilidades (fmp)  /
+##+ Detalles: Emplea estimador "numerico" de maxima verosimilitud,/
+##+   para la funcion Poisson.                                   /
+##  Ejemplo: Ajuste de la funcion empleando datos de            /
+##   arboles "monumentales" (o grandes).         /
+## -----------------------------------------------------------/ 
+##                                                           /
+## Profesor: Christian Salas Eljatib                        /
+## E-mail: christian.salas AT uchile DOT cl                /
+## Web: https://eljatib.com                               /
+##=======================================================/
 ### I. Empleando la funcion de Poisson
 mi.lambda<-1; y<-3
 factorial(3)
