@@ -1,7 +1,8 @@
 ##! Script: "rls1.r"                                              /
 ##- Sobre:  Ajuste modelo de regresion lineal simple (RLS)       /
 ##+ Detalles:  Emplea estimador de minimos cuadrados.           /
-##+ Ejemplo: Datos de tamanho de peces.                        /
+##+ Ejemplo: Datos de gasto social a nivel pais.  Relacion     /
+##+  entre inequidad versus gasto social                      /
 ## -----------------------------------------------------------/ 
 ##                                                           /
 ## Profesor: Christian Salas Eljatib                        /
@@ -14,39 +15,41 @@
 ##+## I. Datos para ejemplo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 library(datana)
-data(fishgrowth2)
-#?fishgrowth2 #ejecutelo en la consola
-df <- fishgrowth2
+data(econcountryb)
+#?econcountryb #ejecutelo en la consola
+df <- econcountryb
 
 head(df)
 dim(df)
 str(df)
 
+
 ##-Estadistica descriptiva
-summary(df$largo)
+summary(df$poverty)
 ##estadistica descriptiva para dos variables
-summary(df[,c("largo","edad")])
+summary(df[,c("gini","socspend")])
 
 ##-Cuadro de estadistica descriptiva para dos variables
-descstat(df[,c("largo","edad")])
+descstat(df[,c("gini","socspend")])
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+# II. Graficos de interes
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##-Distribucion
-boxplot(df$largo)
-hist(df$largo)
+boxplot(df$gini)
+hist(df$gini)
 
-boxplot(df$edad)
-hist(df$edad)
+boxplot(df$socspend)
+hist(df$socspend)
 
 ##-Dispersion
-plot(largo ~ edad, data=df)
+## relacion entre gasto social y inequidad
+plot(gini~socspend, data=df)
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+## III. Ajuste del modelo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-mod1<- lm(largo~edad,data=df)
+mod1<- lm(gini~socspend,data=df)
 summary(mod1)
 
 
@@ -81,15 +84,15 @@ b1.hat<-coef(mod1)[2]
 b0.hat
 b1.hat
 ##- generando vector ficticio con la variable predictora
-t.fake <- 1:8
-t.fake
-length(t.fake)
+x.fake <- 5:35
+x.fake
+length(x.fake)
 ##- generando vector con valor esperado segun el modelo ajustado
-y.esperado <- b0.hat + b1.hat * t.fake
+y.esperado <- b0.hat + b1.hat * x.fake
 
 ##- Grafico de dispersion con valor esperado
-plot(largo~edad, data=df)
-lines(t.fake, y.esperado, col="red",lwd=2)
+plot(gini~socspend, data=df)
+lines(x.fake, y.esperado, col="red",lwd=2)
 ##!==fin del grafico de comportamiento
 
 
@@ -97,11 +100,11 @@ lines(t.fake, y.esperado, col="red",lwd=2)
 ##+## V. Valores ajustados y residuales
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##-Valor ajustado
-df$y.aju <- b0.hat + b1.hat * df$edad
+df$y.aju <- b0.hat + b1.hat * df$socspend
 head(df)
 
 ##-Valor residual
-df$e.aju <- df$largo-df$y.aju
+df$e.aju <- df$gini-df$y.aju
 head(df)
 
 tail(df)
