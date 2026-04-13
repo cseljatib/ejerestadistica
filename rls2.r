@@ -15,9 +15,15 @@
 ##+## I. Datos para ejemplo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 library(datana)
+<<<<<<< HEAD
 data(socioecon)
 #?socioecon #ejecutelo en la consola
 df <- socioecon
+=======
+data(econcountryb)
+#?econcountryb #ejecutelo en la consola
+df <- econcountryb
+>>>>>>> 6d9e1e64a9a34f80a55af7624dc44406ac754955
 
 head(df)
 dim(df)
