@@ -7,7 +7,7 @@
 ## Ejemplo: Datos de ingreso per capita global.                /
 ##------------------------------------------------------------/ 
 ##                                                           /
-## Profesor: Christian Salas Eljatib                        /
+##> Profesor: Christian Salas Eljatib                       /
 ## E-mail: christian.salas AT uchile DOT cl                /
 ## Web: https://eljatib.com                               /
 ##=======================================================/
@@ -111,7 +111,7 @@ lim.sup <- m.y+e.m
 c(lim.inf,lim.sup)
 
 message("Aca termina el script!")
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#*´¨)
-#¸.•´¸.•*´¨) ¸.•*¨)
-#(¸.•´ (¸.•` ¤ Fin del script
+#+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#+´¨)
+#+¸.•´¸.•*´¨) ¸.•*¨)
+#+(¸.•´ (¸.•` ¤ Fin del script

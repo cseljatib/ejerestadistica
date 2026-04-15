@@ -1,14 +1,14 @@
-## Script: "calcparam2.r"                                         /
-## Sobre:  Calcula parametros-2                                  /
-## Detalles: Calcula la mediana y la varianza de una variable   /
-##  aleatoria.                                                 /
-## Ejemplo: datos de ejercicio de los apuntes.                /
-##-----------------------------------------------------------/ 
-##                                                          /
-## Profesor: Christian Salas Eljatib                       /
-## E-mail: christian.salas AT uchile DOT cl               /
-## Web: https://eljatib.com                              /
-##======================================================/
+##! Script: "calcparam2.r"                                         /
+##+ Sobre:  Calcula parametros-2                                  /
+##* Detalles: Calcula la varianza y ordena una variable          /
+##*  aleatoria en una poblacion.                                /
+##  Ejemplo: datos de ejercicio de los apuntes.                /
+##------------------------------------------------------------/ 
+##                                                           /
+##> Profesor: Christian Salas Eljatib                       /
+##? E-mail: christian.salas AT uchile DOT cl               /
+##+ Web: https://eljatib.com                              /
+##=======================================================/
 #
 ##!Definiendo el vector de valores para la poblacion
 x<-c(62.9,67.5,68.5,67.4,69.4,64.3,61.7,85.4,59.1)
@@ -17,17 +17,18 @@ x
 ##!Tamanho poblacional
 N <- length(x)
 N
-##+Parametro del total
+##+(a) El parametro del total
 tau.x <- sum(x)
 tau.x
-##+Parametro de la media
+##+(b) El parametro de la media
 mu.x <- tau.x/N
 mu.x
 ##-compare el resultado anterior con
 mean(x)
 
-##!(a) El parametro de la varianza
+##!(c) El parametro de la varianza
 (1/N)*sum((x-mu.x)^2) 
+# este es el valor correcto
 
 ##+compare el resultado anterior con
 var(x)
@@ -36,7 +37,7 @@ var(x)
 (1/(N-1))*sum((x-mu.x)^2) 
 #ve alguna diferencia?
 
-##!(b) Ordenando los valores de menor a mayor
+##!(d) Ordenando los valores de menor a mayor
 sort.x<-sort(x)
 sort.x
 # la mediana, es el parametro que divide en dos 

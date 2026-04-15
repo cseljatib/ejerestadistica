@@ -7,7 +7,7 @@
 ##! Ejemplo: Datos de edad provenientes de la encuesta CASEN.  /
 ##------------------------------------------------------------/ 
 ##                                                           /
-## Profesor: Christian Salas Eljatib                        /
+##> Profesor: Christian Salas Eljatib                       /
 ## E-mail: christian.salas AT uchile DOT cl                /
 ## Web: https://eljatib.com                               /
 ##=======================================================/
@@ -43,9 +43,9 @@ hist(df$edad)
 
 
 ##%%%%%%%%%%%%%%%%
-## II. Estrategia de muestreo
+##> II. Estrategia de muestreo
 ##%%%%%%%%%%%%%%%%
-###Tamanho muestral
+##! Tamanho muestral
 n<- 12
 
 ## Seleccion de elementos bajo muestreo aleatorio simple.
@@ -53,7 +53,7 @@ n<- 12
 #como se emplea la funcion sample()?
 sample(1:10,3)
 
-# seleccionemos los elementos
+#* seleccionemos los elementos
 elem.muestra <- sample(1:N,size=n,replace=FALSE)
 elem.muestra
 
@@ -148,7 +148,7 @@ lim.sup <- m.y+e.m
 c(lim.inf,lim.sup)
 
 message("Aca termina el script!")
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#*´¨)
-#¸.•´¸.•*´¨) ¸.•*¨)
-#(¸.•´ (¸.•` ¤ Fin del script
+#+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+#+´¨)
+#+¸.•´¸.•*´¨) ¸.•*¨)
+#+(¸.•´ (¸.•` ¤ Fin del script
