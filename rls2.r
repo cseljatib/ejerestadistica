@@ -1,4 +1,4 @@
-##! Script: "rls1.r"                                              /
+##! Script: "rls2.r"                                              /
 ##- Sobre:  Ajuste modelo de regresion lineal simple (RLS)       /
 ##+ Detalles:  Emplea estimador de minimos cuadrados.           /
 ##+ Ejemplo: Datos de gasto social a nivel pais.  Relacion     /
@@ -15,15 +15,10 @@
 ##+## I. Datos para ejemplo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 library(datana)
-<<<<<<< HEAD
 data(socioecon)
+head(socioecon)
 #?socioecon #ejecutelo en la consola
 df <- socioecon
-=======
-data(econcountryb)
-#?econcountryb #ejecutelo en la consola
-df <- econcountryb
->>>>>>> 6d9e1e64a9a34f80a55af7624dc44406ac754955
 
 head(df)
 dim(df)
