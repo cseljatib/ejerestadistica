@@ -1,15 +1,18 @@
-##! Script: "calcparam2.r"                                         /
-##+ Sobre:  Calcula parametros-2                                  /
-##* Detalles: Calcula la varianza y ordena una variable          /
-##*  aleatoria en una poblacion.                                /
-##  Ejemplo: datos de ejercicio de los apuntes.                /
-##------------------------------------------------------------/ 
-##                                                           /
-##> Profesor: Christian Salas Eljatib                       /
-##? E-mail: christian.salas AT uchile DOT cl               /
-##+ Web: https://eljatib.com                              /
-##=======================================================/
-#
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script: "calcparam2.r"                                        ║
+##+║ Sobre:  Calcula parametros-2                                  ║
+##-║ Detalles: Calcula la varianza y ordena una variable           ║
+##-║  aleatoria en una poblacion.                                  ║
+## ║                                                               ║
+## ║                                                               ║
+##!║ Ejemplo: datos de ejercicio de los apuntes.                   ║
+##-║-----------------------------------------------------------    ║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
+
 ##!Definiendo el vector de valores para la poblacion
 x<-c(62.9,67.5,68.5,67.4,69.4,64.3,61.7,85.4,59.1)
 x

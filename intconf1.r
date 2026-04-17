@@ -1,16 +1,17 @@
-##! Script: "intconf1.r"                                             /
-##- Sobre:  Intervalo de confianza para muestreo aleatorio simple   /
-##+ Detalles: Realiza un muestreo aleatorio simple sobre una       /
-##+  poblacion para calcular estadigrafos (i.e., estadisticos) e  /
-##+  intervalo de confianza estadistico del estimador del        /
-##+  parametro de la media.                                     /
-## Ejemplo: Datos de ingreso per capita global.                /
-##------------------------------------------------------------/ 
-##                                                           /
-##> Profesor: Christian Salas Eljatib                       /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
+##!╔════════════════════════════════════════════════════════════════╗
+##*║ Script: "intconf1.r"                                           ║
+##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple  ║
+##-║ Detalles: Realiza un muestreo aleatorio simple sobre una       ║
+##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e    ║
+## ║ intervalo de confianza estadistico del estimador del           ║
+## ║ parametro de la media.                                         ║
+##!║ Ejemplo: Datos de ingreso per capita por pais.                 ║
+##-║-----------------------------------------------------------     ║
+## ║                                                                ║
+##>║ Profesor: Christian Salas Eljatib                              ║
+##+║ E-mail: christian.salas AT uchile DOT cl                       ║
+##*║ Web: https://eljatib.com                                       ║
+##!╚════════════════════════════════════════════════════════════════╝
 
 
 ##! el N dado es

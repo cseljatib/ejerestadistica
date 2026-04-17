@@ -1,14 +1,17 @@
-##! Script: "prhipotesis1.r"                                        /
-##+ Sobre:  Prueba de hipotesis para la estimacion de la media.    /
-##- Detalles: Se busca relacionar la prueba de hipotesis          /
-##-  con intervalos confidenciales, para realizar inferencia.    /
-##! Ejemplo: Datos de edad provenientes de la encuesta CASEN.   /
-##------------------------------------------------------------/ 
-##                                                           /
-## Profesor: Christian Salas Eljatib                        /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
+##!╔════════════════════════════════════════════════════════════════╗
+##*║ Script: "phipotesisf.r"                                        ║
+##+║ Sobre:  Prueba de hipotesis para la estimacion de la media.    ║
+##-║ Detalles: Que relacion tienen prueba de hipotesis, valor-P e   ║
+##-║  intervalos confidenciales en inferencia estadistica?.         ║
+## ║                                                                ║
+## ║                                                                ║
+##!║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.      ║
+##-║----------------------------------------------------------------║
+## ║                                                                ║
+##>║ Profesor: Christian Salas Eljatib                              ║
+##+║ E-mail: christian.salas AT uchile DOT cl                       ║
+##*║ Web: https://eljatib.com                                       ║
+##!╚════════════════════════════════════════════════════════════════╝
 
 ##+%%%%%%%%%%%%%%%%
 ##! I. Datos
@@ -43,13 +46,17 @@ hist(df$edad)
 ##- Tamanho muestral
 n<- 10
 ##- seleccionemos los elementos
-set.seed(12345)
-N<-nrow(df)
-N
-elem.muestra <- sample(1:N,size=n,replace=FALSE)
+set.seed(12345) 
+nobs.dispo<-nrow(df) ## numero de observaciones disponibles
+nobs.dispo
+##- recuerde que una secuencia se obtiene mediante
+1:4 ##> entre 1 al 4 (salto de uno)
+##- una lista con la posicion correlativa de los elementos 
+list.num.corre<-1:nobs.dispo 
+elem.muestra <- sample(list.num.corre,size=n,replace=FALSE)
 elem.muestra
 
-##+ dichos elementos corresponden a las siguientes valores de variables
+##+ dichos elementos corresponden a la siguiente porcion de los datos
 mi.muestra <- df[elem.muestra,]
 dim(mi.muestra)
 
@@ -59,48 +66,51 @@ dim(mi.muestra)
 y<-mi.muestra$edad
 length(y) ##esto debe ser igual al tamanho muestral
 y
+##+ estadistica descriptiva de la variable 'y' en la muestra
+descstat(y)
+##+ histograma de la variable 'y' en la muestra
 hist(y)
 
 
-##!%%%%%%%%%%%%%%%%%%%%%%%%
+##!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ##+ III. Test de hipotesis
-##!%%%%%%%%%%%%%%%%%%%%%%%%
+##!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ##- ---------------------
 ##- (1) Definir hipotesis
 ##- ---------------------
-##H0: mu=mu*
-##HA: mu != mu*
+##? H0: mu=mu*    ##> hipotesis nula
+##? HA: mu != mu* ##> hipotesis alternativa
 
-#+ parametro hipotizado
+#+ valor del parametro hipotizado
 param.hipo<-mu.ast<-16
 
 ##- ---------------------
 ##- (2) Test estadistico
 ##- ---------------------
-#t=(estimador-param.hipo)/(SE(estimador))
+##  t=(estimador-param.hipo)/(SE(estimador))
 
 ##+ 2a. Estimador
 estimador<-m.y<-mean(y)
-estimador
+estimador  #valor del estimador para la muestra
 
 ##+ 2b. Error estandar del estimador
+##- desviacion estandar de la variable
 s.y<-sd(y)
-#SE estimador
-n
-s.y/sqrt(n)
 
-##asumiendo la poblacion de Temuco son 292518 habitantes
-N<-292518
-f<-n/N
+##asumiendo la poblacion de Temuco son los siguientes N habitantes
+N<-300000 
+f<-n/N #fraccion de muestreo
 f
-(1-f)
+(1-f) #factor de correccion por poblacion finita
 
 se.ybar<-sqrt( (var(y)/n) * (1-f) )
-#versus
 se.ybar
+#versus 
+sqrt( var(y) / n ) 
 
-#calculo del test estadistico
+
+##+ 2c. Calculo del test estadistico
 estimador-param.hipo
 t.cal<-(estimador-param.hipo)/(se.ybar)
 t.cal
@@ -122,7 +132,7 @@ t.tab #valor de la dist. de t-student a emplear
 ##- ---------------------
 ##- (4) Tomar decision
 ##- ---------------------
-##comparar con el valor absoluto del t calculado
+##+ 4a. Comparar con el valor absoluto del t calculado
 abs.tcal<-abs(t.cal)
 c(abs.tcal,t.tab)
 #- Decisiones posibles
@@ -138,7 +148,7 @@ if(abs.tcal>=t.tab){"Se rechaza H0"}else{"No se rechaza H0"}
 ##!%%%%%%%%%%%%%%%%%%%%%%%%
 ##+ IV. Valor-p
 ##!%%%%%%%%%%%%%%%%%%%%%%%%
-##- El valor-p=Probabilidad de encontrar >=|t.calc|?
+##- El valor-p=Probabilidad de encontrar >=|t.calc|
 ##+  primero revisemos que hace la funcion pt() de R
 pt(1.96,df=10000000000)
 ## es la probabilidad acumulada hasta un valor de la variable
@@ -160,8 +170,9 @@ pt(1.96,df=10000000000)
 ##+  intervalos confidenciales?
 ##!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-##+ a. Primero calcule el margen de error 
+##+ a. Primero calcule el margen de error (o error de muestreo)
 marg.err <-se.ybar*t.tab
+marg.err
 
 ##+ b. Intervalo de confianza, para un nivel de significancia
 ## estadistico de alpha
@@ -172,14 +183,12 @@ c(lim.inf,lim.sup)
 ##! Este intervalo de confianza incluye al valor hipotizado de la
 ##!  prueba de hipotesis establecida?
 
-message("Fin del script sobre prueba de hipotesis!")
-
 ##!══════════════════════════════════════════════════════════════════╗
-##+ Tarea para Ud.
-##- 1. Empleando la funcion logica "if()", responda a la pregunta
-##-  anteriormente planteada.
-##- 2. Calcule el intervalo de confianza para un nivel de
-##-   significancia de 0.01
+##+ Tarea                                                            ║
+##- 1. Empleando la funcion logica "if()", responda a la pregunta    ║
+##-  anteriormente planteada.                                        ║
+##- 2. Calcule el intervalo de confianza para un nivel de            ║
+##-   significancia de 0.01                                          ║
 ##!══════════════════════════════════════════════════════════════════╝
 
 #╔══════════════════════╗
