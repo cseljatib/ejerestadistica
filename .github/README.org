@@ -3,6 +3,10 @@
 En este repositorio se almacenan los scripts de [[https://devtools.r-lib.org/][R]] de los ejercicios estipulados en el libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] y del [[https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile][Magíster en Políticas Públicas]] de la [[https://uchile.cl][Universidad de Chile]].
 
 
+* Paquetes de R
+ :PROPERTIES:
+ :UNNUMBERED: f
+ :END: 
 Para el correcto uso de los scripts, es necesario tener instalados los paquetes =datana= y =biometrics= en su versión de R. 
 
 Por lo tanto, debe primero proceder como sigue
@@ -33,6 +37,12 @@ Es importante destacar que las versiones más recientes de los paquetes antes me
 [[https://github.com/cseljatib/labPackages][web]], para vuestra descarga. Esto se debe a que la frecuencia con la cual se puede
 actualizar un paquete en [[https://r-project.or][el sitio web de R]] es generalmente menor a la cual nosotros realizamos cambios.
 
-** Sugerencias/errores
+* Flujo de los scripts
+ :PROPERTIES:
+ :UNNUMBERED: f
+ :END: 
+Los scripts son presentados siguiendo un sentido docente.
+ 
+* Sugerencias/errores
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
 
