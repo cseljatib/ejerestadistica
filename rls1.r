@@ -1,18 +1,24 @@
-##! Script: "rls1.r"                                              /
-##- Sobre:  Ajuste modelo de regresion lineal simple (RLS)       /
-##+ Detalles:  Emplea estimador de minimos cuadrados.           /
-##+ Ejemplo: Datos de tamanho de peces.                        /
-## -----------------------------------------------------------/ 
-##                                                           /
-## Profesor: Christian Salas Eljatib                        /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script: "rls1.r"                                              ║
+##+║ Sobre:  Ajuste modelo de regresion lineal simple (RLS)        ║
+##-║ Detalles:  Emplea estimador de minimos cuadrados.             ║
+##-║ Mas detalles: Entre otras cosas, en este ejercicio se:        ║
+## ║+ calculan valores ajustados y residuales.                     ║
+## ║+ representa sigma.hat.e en porcentaje.                        ║
+## ║+ crea grafico con valores esperados vs diametro para          ║
+## ║el modelo.                                                     ║
+##*║ Ejemplo: Datos de tamaho de peces (fishgrowth2).              ║
+##-║---------------------------------------------------------------║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
 
 
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##+## I. Datos para ejemplo
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##+================================================
+##! I. Datos
+##+================================================
 library(datana)
 data(fishgrowth2)
 #?fishgrowth2 #ejecutelo en la consola
@@ -30,9 +36,9 @@ summary(df[,c("largo","edad")])
 ##-Cuadro de estadistica descriptiva para dos variables
 descstat(df[,c("largo","edad")])
 
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##+# II. Graficos de interes
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##+================================================
+##! II. Graficos de interes
+##+================================================
 ##-Distribucion
 boxplot(df$largo)
 hist(df$largo)
@@ -45,9 +51,10 @@ plot(largo ~ edad, data=df)
 
 xyboxplot(x=df$edad, y=df$largo)
 xyboxplot(x=df$edad, y=df$largo,xlim=c(0,8))
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##+## III. Ajuste del modelo
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+##+================================================
+##! III. Ajuste del modelo
+##+================================================
 mod1<- lm(largo~edad,data=df)
 summary(mod1)
 
@@ -70,10 +77,10 @@ deviance(mod1)
 ##- compare lo anterior con
 (summary(mod1))$sigma^2
 
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##+## IV. Grafico de comportamiento
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#
+##+================================================
+##! IV. Grafico de comportamiento
+##+================================================
+
 ##-Guardando los coeficientes en un objeto
 coef(mod1)
 coef(mod1)[1]
@@ -95,9 +102,9 @@ lines(t.fake, y.esperado, col="red",lwd=2)
 ##!==fin del grafico de comportamiento
 
 
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-##+## V. Valores ajustados y residuales
-##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##+================================================
+##! V. Valores ajustados y residuales
+##+================================================
 ##-Valor ajustado
 df$y.aju <- b0.hat + b1.hat * df$edad
 head(df)

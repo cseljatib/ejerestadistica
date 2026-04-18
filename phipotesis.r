@@ -5,7 +5,7 @@
 ##-║  confianza estadistica.                                        ║
 ## ║                                                                ║
 ## ║                                                                ║
-##!║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.      ║
+##*║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.      ║
 ##-║----------------------------------------------------------------║
 ## ║                                                                ║
 ##>║ Profesor: Christian Salas Eljatib                              ║
@@ -13,9 +13,9 @@
 ##*║ Web: https://eljatib.com                                       ║
 ##!╚════════════════════════════════════════════════════════════════╝
 
-##+%%%%%%%%%%%%%%%%
+##+==================================================
 ##! I. Datos
-##+%%%%%%%%%%%%%%%%
+##+==================================================
 library(datana)
 head(casen)
 ##- revise la metadata al activar la siguiente linea
@@ -40,9 +40,9 @@ n.all
 descstat(df[,c("edad","ypc")])
 hist(df$edad)
 
-##+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+##+================================================
 ##! II. Calculo de estadisticos en base a muestreo
-##+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+##+================================================
 ##- Tamanho muestral
 n<- 10
 ##- seleccionemos los elementos
@@ -73,9 +73,9 @@ hist(y)
 
 
 
-##!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-##+ III. Test de hipotesis
-##!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+##+================================================
+##! III. Test de hipotesis
+##+================================================
 
 ##- ---------------------
 ##- (1) Definir hipotesis

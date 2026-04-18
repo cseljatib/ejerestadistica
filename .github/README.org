@@ -36,15 +36,22 @@ actualizar un paquete en [[https://r-project.or][el sitio web de R]] es generalm
 
 *** II. Flujo de los scripts
 Los scripts son presentados siguiendo un sentido docente.
-**** Inferencia
+**** 4. Inferencia
 
-1. phipotesis.r: tiene solo comparacion con valor t-tabulado
+4.1) phipotesis.r: tiene solo comparacion con valor t-tabulado
    
-2. phipovalorp.r: explica ademas al valor-p
+4.2) phipovalorp.r: explica ademas al valor-p
    
-3. phipointconf.r: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
+4.3) phipointconf.r: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
    
-4. phipotesisf.r: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
+4.4) phipotesisf.r: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
+**** 6. Regresión lineal simple
+
+6.1) rls1.r: ajuste hasta . Datos: largo de peces
+   
+6.2) rls2.r: ajuste hasta 
+   
+6.3) rls3.r: ajuste hasta 
 
 *** III. Sugerencias/errores
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
