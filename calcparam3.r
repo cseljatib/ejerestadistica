@@ -1,17 +1,17 @@
-##!╔═══════════════════════════════════════════════════════════════╗
-##*║ Script: "calcparam3.r"                                        ║
-##+║ Sobre:  Calcula parametros-3                                  ║
-##-║ Detalles: Calcula el parametro del total de una variable      ║
-##-║  aleatoria en una poblacion.                                  ║
-## ║                                                               ║
-## ║                                                               ║
-##!║ Ejemplo: Datos de eleccion politica.                          ║
-##-║-----------------------------------------------------------    ║
-## ║                                                               ║
-##>║ Profesor: Christian Salas Eljatib                             ║
-##+║ E-mail: christian.salas AT uchile DOT cl                      ║
-##*║ Web: https://eljatib.com                                      ║
-##!╚═══════════════════════════════════════════════════════════════╝
+##!╔═════════════════════════════════════════════════════════════╗
+##*║ Script academico                                            ║
+##+║ Sobre:  Calcula parametros-3                                ║
+##-║ Detalles: Calcula el parametro del total de una variable    ║
+##-║  aleatoria en una poblacion.                                ║
+## ║                                                             ║
+## ║                                                             ║
+##!║ Ejemplo: Datos de eleccion politica.                        ║
+##-║-----------------------------------------------------------  ║
+## ║                                                             ║
+##>║ Profesor: Christian Salas Eljatib                           ║
+##+║ E-mail: christian.salas AT uchile DOT cl                    ║
+##*║ Web: https://eljatib.com                                    ║
+##!╚═════════════════════════════════════════════════════════════╝
 
 ##+%%%%%%%%%%%%%%%%
 ##! I. Poblacion
@@ -69,10 +69,8 @@ vot.totales
 razon.votos.opcion<-votos.opcion/N
 razon.votos.opcion
 
-
-message("Fin del script!")
-#╔═════════════════╗
-#║ Fin del script! ║
-#║ Atte.           ║
-#║ El profesor     ║
-#╚═════════════════╝
+##-╔═════════════════╗
+##-║ Fin del script! ║
+##-║ Atte.           ║
+##-║ El profesor     ║
+##-╚═════════════════╝

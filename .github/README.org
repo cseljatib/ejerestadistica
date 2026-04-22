@@ -47,6 +47,11 @@ Los scripts son presentados siguiendo un sentido docente.
 4.4) phipotesisf.r: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
 **** 6. Regresión lineal simple
 
+
+6.1) modmedia1.r: ajuste modelo del simple promedio. Datos: largo de peces.
+   
+6.2) modmedia2.r: ajuste modelo del simple promedio. Datos: largo de peces.
+   
 6.1) rls1.r: ajuste hasta . Datos: largo de peces
    
 6.2) rls2.r: ajuste hasta 

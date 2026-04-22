@@ -1,5 +1,5 @@
 ##!╔════════════════════════════════════════════════════════════════╗
-##*║ Script: "intconf1.r"                                           ║
+##*║ Script academico                                               ║
 ##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple  ║
 ##-║ Detalles: Realiza un muestreo aleatorio simple sobre una       ║
 ##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e    ║
@@ -111,8 +111,9 @@ lim.inf
 lim.sup <- m.y+e.m
 c(lim.inf,lim.sup)
 
-message("Aca termina el script!")
-#+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-#+´¨)
-#+¸.•´¸.•*´¨) ¸.•*¨)
-#+(¸.•´ (¸.•` ¤ Fin del script
+
+##-════════════════════════════
+##-´¨)
+##-¸.•´¸.•*´¨) ¸.•*¨)
+##-(¸.•´ (¸.•` ¤ Fin del script
+##-════════════════════════════

@@ -1,23 +1,29 @@
-##! Script: "rls1.r"                                              /
-##- Sobre:  Ajuste modelo de regresion lineal simple (RLS)       /
-##+ Detalles:  Emplea estimador de minimos cuadrados.           /
-##+ Ejemplo: Datos de gasto social a nivel pais.  Relacion     /
-##+  entre pobreza versus gasto social                      /
-## -----------------------------------------------------------/ 
-##                                                           /
-## Profesor: Christian Salas Eljatib                        /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
-
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script: "rls3a.r"                                             ║
+##+║ Sobre:  Ajuste modelo de regresion lineal simple (RLS)        ║
+##-║ Detalles:  Emplea estimador de minimos cuadrados.             ║
+##-║ Mas detalles: Entre otras cosas, en este ejercicio se:        ║
+## ║+ revisan los parametros estimados del modelo.                 ║
+## ║+ usa el modelo para predecir dado un valor para la variable   ║
+## ║predictora                                                     ║
+## ║                                                               ║
+##*║ Ejemplo: Datos de gasto social a nivel pais (econcountryb).   ║
+## ║Relacion entre inequidad versus gasto social                   ║
+##-║---------------------------------------------------------------║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+## I. Datos para ejemplo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 library(datana)
-data(econcountryb)
-#?econcountryb #ejecutelo en la consola
-df <- econcountryb
+data(socioecon)
+head(socioecon)
+#?socioecon #ejecutelo en la consola
+df <- socioecon
 
 head(df)
 dim(df)
@@ -27,29 +33,29 @@ str(df)
 ##-Estadistica descriptiva
 summary(df$poverty)
 ##estadistica descriptiva para dos variables
-summary(df[,c("poverty","socspend")])
+summary(df[,c("gini","socspend")])
 
 ##-Cuadro de estadistica descriptiva para dos variables
-descstat(df[,c("poverty","socspend")])
+descstat(df[,c("gini","socspend")])
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+# II. Graficos de interes
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##-Distribucion
-boxplot(df$poverty)
-hist(df$poverty)
+boxplot(df$gini)
+hist(df$gini)
 
 boxplot(df$socspend)
 hist(df$socspend)
 
 ##-Dispersion
 ## relacion entre gasto social y inequidad
-plot(poverty~socspend, data=df)
+plot(gini~socspend, data=df)
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+## III. Ajuste del modelo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-mod1<- lm(poverty~socspend,data=df)
+mod1<- lm(gini~socspend,data=df)
 summary(mod1)
 
 
@@ -91,7 +97,7 @@ length(x.fake)
 y.esperado <- b0.hat + b1.hat * x.fake
 
 ##- Grafico de dispersion con valor esperado
-plot(poverty~socspend, data=df, ylab="Pobreza (%/total.hab)", xlab="Gasto social (%/gdp)")
+plot(gini~socspend, data=df)
 lines(x.fake, y.esperado, col="red",lwd=2)
 ##!==fin del grafico de comportamiento
 
@@ -104,7 +110,7 @@ df$y.aju <- b0.hat + b1.hat * df$socspend
 head(df)
 
 ##-Valor residual
-df$e.aju <- df$poverty-df$y.aju
+df$e.aju <- df$gini-df$y.aju
 head(df)
 
 tail(df)

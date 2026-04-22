@@ -1,17 +1,17 @@
-##!╔═══════════════════════════════════════════════════════════════╗
-##*║ Script: "calcparam1.r"                                        ║
-##+║ Sobre:  Calcula parametros-1                                  ║
-##-║ Detalles: Calcula el total y el promedio de una variable      ║
-##-║  aleatoria en una poblacion.                                  ║
-## ║                                                               ║
-## ║                                                               ║
-##!║ Ejemplo: datos de ejercicio de los apuntes.                   ║
-##-║-----------------------------------------------------------    ║
-## ║                                                               ║
-##>║ Profesor: Christian Salas Eljatib                             ║
-##+║ E-mail: christian.salas AT uchile DOT cl                      ║
-##*║ Web: https://eljatib.com                                      ║
-##!╚═══════════════════════════════════════════════════════════════╝
+##!╔═════════════════════════════════════════════════════════════╗
+##*║ Script academico                                            ║
+##+║ Sobre:  Calcula parametros-1                                ║
+##-║ Detalles: Calcula el total y el promedio de una variable    ║
+##-║  aleatoria en una poblacion.                                ║
+## ║                                                             ║
+## ║                                                             ║
+##!║ Ejemplo: datos de ejercicio de los apuntes.                 ║
+##-║-----------------------------------------------------------  ║
+## ║                                                             ║
+##>║ Profesor: Christian Salas Eljatib                           ║
+##+║ E-mail: christian.salas AT uchile DOT cl                    ║
+##*║ Web: https://eljatib.com                                    ║
+##!╚═════════════════════════════════════════════════════════════╝
 
 
 ##! Definiendo el vector de valores para la poblacion

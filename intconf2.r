@@ -1,17 +1,17 @@
-##!╔════════════════════════════════════════════════════════════════╗
-##*║ Script: "intconf2.r"                                           ║
-##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple  ║
-##-║ Detalles: Realiza un muestreo aleatorio simple sobre una       ║
-##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e    ║
-## ║ intervalo de confianza estadistico del estimador del           ║
-## ║ parametro de la media.                                         ║
-##!║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.      ║
-##-║-----------------------------------------------------------     ║
-## ║                                                                ║
-##>║ Profesor: Christian Salas Eljatib                              ║
-##+║ E-mail: christian.salas AT uchile DOT cl                       ║
-##*║ Web: https://eljatib.com                                       ║
-##!╚════════════════════════════════════════════════════════════════╝
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script academico                                              ║
+##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple ║
+##-║ Detalles: Realiza un muestreo aleatorio simple sobre una      ║
+##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e   ║
+## ║ intervalo de confianza estadistico del estimador del          ║
+## ║ parametro de la media.                                        ║
+##!║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.     ║
+##-║-----------------------------------------------------------    ║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
 
 
 ##+%%%%%%%%%%%%%%%%
