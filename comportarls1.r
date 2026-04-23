@@ -63,11 +63,11 @@ b0.hat<-coef(mod1)[1]
 b1.hat<-coef(mod1)[2]
 
 #grafico de comportamiento-modelo 1
-d.fake <- 10:110
-length(d.fake)
-h.ajumod1 <- b0.hat + b1.hat * d.fake
+d.ast <- 10:110
+length(d.ast)
+h.ajumod1 <- b0.hat + b1.hat * d.ast
 plot(h~d, data=df)
-lines(d.fake, h.ajumod1, col="red",lwd=2)
+lines(d.ast, h.ajumod1, col="red",lwd=2)
 
 
 #Ajuste modelo 2
@@ -79,7 +79,7 @@ b0.hat2<-coef(mod2)[1]
 b1.hat2<-coef(mod2)[2]
 b0.hat2
 b1.hat2
-h.ajumod2 <- b0.hat2 + b1.hat2 * (1/d.fake)
+h.ajumod2 <- b0.hat2 + b1.hat2 * (1/d.ast)
 
 #Ajuste modelo 3
 df$inv.rd <- 1/(sqrt(df$d)+10)
@@ -90,15 +90,15 @@ b0.hat3<-coef(mod3)[1]
 b1.hat3<-coef(mod3)[2]
 b0.hat3
 b1.hat3
-h.ajumod3 <- b0.hat3 + b1.hat3 * (1/(sqrt(d.fake)+10))
+h.ajumod3 <- b0.hat3 + b1.hat3 * (1/(sqrt(d.ast)+10))
 
 
 ##grafico de comportamiento para ambos modelos
 plot(h~d, data=df,xlab="Diametro (cm)",
      ylab="Altura (m)", las=1, col="gray")
-lines(d.fake, h.ajumod1, col="black", lwd=2, lty=2)
-lines(d.fake, h.ajumod2, col="red", lwd=2, lty=1)
-lines(d.fake, h.ajumod3, col="blue", lwd=2, lty=1)
+lines(d.ast, h.ajumod1, col="black", lwd=2, lty=2)
+lines(d.ast, h.ajumod2, col="red", lwd=2, lty=1)
+lines(d.ast, h.ajumod3, col="blue", lwd=2, lty=1)
 
 legend("bottomright",c("Mod1","Mod2","Mod3"), title="Modelo",
        col = c("black","red","blue"), lty=c(2,1,1), lwd=c(2,2,2))

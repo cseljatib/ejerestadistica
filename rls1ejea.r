@@ -54,7 +54,7 @@ plot(largo ~ edad, data=df)
 
 ##(b) distribucion de Y versus X
 xyboxplot(x=df$edad, y=df$largo)
-xyboxplot(x=df$edad, y=df$largo,xlim=c(0,8))
+xyboxplot(x=df$edad, y=df$largo,xlim=c(0,9))
 
 ##+================================================
 ##! III. Ajuste del modelo
