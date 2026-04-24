@@ -104,6 +104,9 @@ b1.hat*1.5
 ## estimados para los coeficientes, por lo tanto 
 b0.hat+b1.hat*20
 
+b0.hat+b1.hat*21
+
+b0.hat+b1.hat*22
 
 ##-╔══════════════════════╗
 ##-║ Estimad@ estudiante: ║
