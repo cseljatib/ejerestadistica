@@ -21,7 +21,7 @@
 library(datana)
 data(bearscomp2)
 df <- bearscomp2
-#?bearsdepu2 #ejecutelo en la consola
+#?bearscomp2 #ejecutelo en la consola
 head(df)
 dim(df)
 str(df)
@@ -67,7 +67,7 @@ xyhist(x=df$edad,y=df$peso,xlab="Edad",ylab="Peso")
 require(scatterplot3d)
 ##- Por ejemplo, peso=f(edad, largo)
 op<-par(las=1) 
-s3d <-scatterplot3d(bearsdepu2$edad,bearsdepu2$largo,bearsdepu2$peso,
+s3d <-scatterplot3d(df$edad,df$largo,df$peso,
                     pch=16, highlight.3d=TRUE,
       type="h",angle=30,xlab="Edad",ylab="Largo (m)",zlab="Peso (kg)")
 
@@ -201,9 +201,9 @@ anova(m4.osos,m3.osos)
 
 ##? Cual modelo selecciona Ud? Fundamente
 
-#╔═════════════════╗
-#║ Fin del script! ║
-#║ Atte.           ║
-#║ El profesor     ║
-#╚═════════════════╝
+#*╔═════════════════╗
+#*║ Fin del script! ║
+#*║ Atte.           ║
+#*║ El profesor     ║
+#*╚═════════════════╝
 
