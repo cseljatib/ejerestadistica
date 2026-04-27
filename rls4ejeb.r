@@ -28,11 +28,6 @@ head(df)
 dim(df)
 str(df)
 
-##-Estadistica descriptiva
-summary(df$poverty)
-##estadistica descriptiva para dos variables
-descstat(df[,c("poverty","socspend")])
-
 ##-Cuadro de estadistica descriptiva para dos variables
 descstat(df[,c("poverty","socspend")])
 

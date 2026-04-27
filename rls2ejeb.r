@@ -23,16 +23,13 @@
 library(datana)
 data(socioecon)
 ##?socioecon #ejecutelo en la consola
+##? revise en la metadata cual es la definicion para "poverty"
+##? revise en la metadata cual es la definicion para "socspend"
 df <- socioecon
 
 head(df)
 dim(df)
 str(df)
-
-##-Estadistica descriptiva
-summary(df$poverty)
-##estadistica descriptiva para dos variables
-descstat(df[,c("poverty","socspend")])
 
 ##-Cuadro de estadistica descriptiva para dos variables
 descstat(df[,c("poverty","socspend")])
