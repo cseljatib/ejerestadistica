@@ -23,16 +23,13 @@
 library(datana)
 data(socioecon)
 ##?socioecon #ejecutelo en la consola
+##? revise en la metadata cual es la definicion para "poverty"
+##? revise en la metadata cual es la definicion para "socspend"
 df <- socioecon
 
 head(df)
 dim(df)
 str(df)
-
-##-Estadistica descriptiva
-summary(df$poverty)
-##estadistica descriptiva para dos variables
-descstat(df[,c("poverty","socspend")])
 
 ##-Cuadro de estadistica descriptiva para dos variables
 descstat(df[,c("poverty","socspend")])
@@ -42,13 +39,19 @@ descstat(df[,c("poverty","socspend")])
 ##+================================================
 ##-Distribucion
 boxplot(df$poverty)
+boxplot(df$poverty,las=1,ylab = "Pobreza (% de la población)")
 hist(df$poverty)
 
 boxplot(df$socspend)
-hist(df$socspend)
+hist(df$socspend,las=1,xlab = "Gasto social (% del PIB)")
 
 ##-Dispersion
 plot(poverty ~ socspend, data=df)
+plot(poverty ~ socspend, data=df,las=1,ylab = "Pobreza (% de la población)",
+     xlab = "Gasto social (% del PIB)")
+plot(poverty ~ socspend, data=df,las=1,ylab = "Pobreza (% de la población)",
+     xlab = "Gasto social (% del PIB)",xlim=c(0,max(df$socspend)),
+     ylim = c(0,20))
 
 ##+================================================
 ##! III. Ajuste del modelo
