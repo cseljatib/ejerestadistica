@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+<!-- 2026-04-30 Thu 15:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sitio con material complementario del _libro Estadística Aplicada e Inferencial_</title>
+<meta name="author" content="Christian Salas-Eljatib" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/code-copy.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/code-copy.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Sitio con material complementario del <span class="underline">libro Estadística Aplicada e Inferencial</span></h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8a78a02">I. Versiones más actualizadas de los paquetes</a></li>
+<li><a href="#orgb3c83b4">II. Paquetes de R</a></li>
+<li><a href="#org4d1b663">III. Flujo de los scripts</a>
+<ul>
+<li><a href="#org9f4305f">4) inferencia</a></li>
+<li><a href="#org8b5a0ea">6) Regresión lineal simple</a></li>
+</ul>
+</li>
+<li><a href="#orgd268ebb">Sugerencias/errores</a></li>
+</ul>
+</div>
+</div>
+<p>
+En este repositorio se almacenan los scripts de <a href="https://devtools.r-lib.org/">R</a> de los ejercicios estipulados en el libro <b>Estadística Aplicada e Inferencial</b> del Profesor <a href="https://eljatib.com">Christian Salas-Eljatib</a> del <a href="https://biometriaforestal.uchile.cl">Laboratorio de Biometría y Modelación Forestal</a> y del <a href="https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile">Magíster en Políticas Públicas</a> de la <a href="https://uchile.cl">Universidad de Chile</a>.
+</p>
+<div id="outline-container-org8a78a02" class="outline-2">
+<h2 id="org8a78a02">I. Versiones más actualizadas de los paquetes</h2>
+<div class="outline-text-2" id="text-org8a78a02">
+<p>
+Es importante destacar que las versiones más recientes de los paquetes antes mencionados se encuentran en el siguiente 
+<a href="https://github.com/cseljatib/labPackages">web</a>, para vuestra descarga. Esto se debe a que la frecuencia con la cual se puede
+actualizar un paquete en <a href="https://r-project.or">el sitio web de R</a> es generalmente menor a la cual nosotros realizamos cambios.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3c83b4" class="outline-2">
+<h2 id="orgb3c83b4">II. Paquetes de R</h2>
+<div class="outline-text-2" id="text-orgb3c83b4">
+<p>
+Para el correcto uso de los scripts, es necesario tener instalados los paquetes <code>datana</code> y <code>biometrics</code> en su versión de R. 
+</p>
+
+<p>
+Por lo tanto, debe primero proceder como sigue
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">install.packages(<span style="color: #79a8ff;">"datana"</span>)
+install.packages(<span style="color: #79a8ff;">"biometrics"</span>) 
+</pre>
+</div>
+
+<p>
+Para <b>verificar</b> que ambos paquetes estan correctamente instalados, ejecute:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #00bcff;">library</span>(datana)
+<span style="color: #00bcff;">library</span>(biometrics)
+</pre>
+</div>
+<p>
+y para verificar la versión del paquete, puede emplear la función <code>packageVersion()</code> como sigue
+</p>
+<div class="org-src-container">
+<pre class="src src-R">packageVersion(<span style="color: #79a8ff;">"datana"</span>)
+</pre>
+</div>
+
+<p>
+Cita del paquete
+</p>
+<div class="org-src-container">
+<pre class="src src-R">citation(<span style="color: #79a8ff;">"datana"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4d1b663" class="outline-2">
+<h2 id="org4d1b663">III. Flujo de los scripts</h2>
+<div class="outline-text-2" id="text-org4d1b663">
+<p>
+Los scripts son presentados siguiendo un sentido docente.
+</p>
+</div>
+<div id="outline-container-org9f4305f" class="outline-3">
+<h3 id="org9f4305f">4) inferencia</h3>
+<div class="outline-text-3" id="text-org9f4305f">
+<p>
+4.1) <a href="./phipotesis.r">phipotesis.r</a>: tiene solo comparacion con valor t-tabulado
+</p>
+
+<p>
+4.2) <a href="./phipovalorp.r">phipovalorp.r</a>: explica ademas al valor-p
+</p>
+
+<p>
+4.3) <a href="./phipointconf.r">phipointconf.r</a>: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
+</p>
+
+<p>
+4.4) <a href="./phipotesisf.r">phipotesisf.r</a>: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
+</p>
+</div>
+</div>
+<div id="outline-container-org8b5a0ea" class="outline-3">
+<h3 id="org8b5a0ea">6) Regresión lineal simple</h3>
+<div class="outline-text-3" id="text-org8b5a0ea">
+<p>
+6.1) <a href="./modmedia1.r">modmedia1.r</a>: ajuste modelo del simple promedio. Datos: largo de peces.
+</p>
+
+<p>
+6.2) <a href="./modmedia2.r">modmedia2.r</a>: ajuste modelo del simple promedio. Datos: largo de peces.
+</p>
+
+<p>
+6.1) <a href="./rls1.r">rls1.r</a>: ajuste hasta . Datos: largo de peces
+</p>
+
+<p>
+6.2) <a href="./rls2.r">rls2.r</a>: ajuste hasta 
+</p>
+
+<p>
+6.3) <a href="./rls3.r">rls3.r</a>: ajuste hasta 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd268ebb" class="outline-2">
+<h2 id="orgd268ebb">Sugerencias/errores</h2>
+<div class="outline-text-2" id="text-orgd268ebb">
+<p>
+En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a <a href="mailto:christian.salas@uchile.cl">este email</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Christian Salas-Eljatib</p>
+<p class="date">Created: 2026-04-30 Thu 15:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
