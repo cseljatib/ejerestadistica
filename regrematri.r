@@ -1,14 +1,19 @@
-##! Script: "regrematri.r"                                        /
-##- Sobre:  Ajuste del modelo de regresion lineal simple (RLS)   /
-##+ Detalles:  Emplea estimador de minimos cuadrados, pero      /
-##   mediante algebra matricial.                                /
-##+ Ejemplo: Datos de tamanho de peces.                        /
-## -----------------------------------------------------------/ 
-##                                                           /
-## Profesor: Christian Salas Eljatib                        /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script academico                                              ║
+##+║ Sobre: Ajuste del modelo de regresion lineal simple (RLS)     ║
+##-║ Detalles:  Emplea estimador de minimos cuadrados              ║
+##-║ Mas detalles:  Emplea estimador de minimos cuadrados, pero    ║
+## ║  mediante algebra matricial.                                  ║
+## ║                                                               ║
+## ║                                                               ║
+##*║ Ejemplo: Datos de tamanho de peces (fishgrowth2)              ║
+## ║                                                               ║
+##-║---------------------------------------------------------------║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
 
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
