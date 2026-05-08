@@ -51,20 +51,29 @@ summary((df$edad/12))
 ##!Grafico de dispersion entre dos variables
 ##- ===================================
 plot(peso ~ edad, data=df)
-plot(peso ~ largo, data=df)
-plot(peso ~ pechoP, data=df)
-plot(peso ~ cabezaL, data=df)
 
 ##!Dispersion acompanhado por grafico de distribucion
 ##+ marginal, funcion xyhist() del paquete datana
 xyhist(x=df$edad,y=df$peso,xlab="Edad",ylab="Peso")
+## ahora para otras tres potenciales variables predictoras
+plot(peso ~ largo, data=df)
+plot(peso ~ pechoP, data=df)
+plot(peso ~ cabezaL, data=df)
+
+
+##* exploremos el uso de una funcion grafica de utilidad
+##revise la syntaxis en detalle mediante ?xymultiplot
+df2 <- df[,c('edad','largo','pechoP','cabezaL','cabezaA','peso')]
+descstat(df2)
+xymultiplot(df2)
+
 
 ##- ===================================
 ##!Grafico de dispersion entre tres variables
 ##+ es decir, en tres dimensiones (3D)
 ##- ===================================
 ##* Note que debe instalar el paquete 'scatterplot3d' 
-require(scatterplot3d)
+library(scatterplot3d)
 ##- Por ejemplo, peso=f(edad, largo)
 op<-par(las=1) 
 s3d <-scatterplot3d(df$edad,df$largo,df$peso,
