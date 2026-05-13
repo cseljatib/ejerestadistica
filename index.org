@@ -1,25 +1,21 @@
-:PROPERTIES:
-:UNNUMBERED: TRUE
-:END:
 
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/html-theme-readtheorg.setup
 
-#+title: Sitio con material complementario del _libro Estadística Aplicada e Inferencial_
+#+title: Sitio del _libro Estadística Aplicada e Inferencial_
 #+language: es
 #+author: Christian Salas-Eljatib
 
-En este repositorio se almacenan los scripts de [[https://devtools.r-lib.org/][R]] de los ejercicios estipulados en el libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] y del [[https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile][Magíster en Políticas Públicas]] de la [[https://uchile.cl][Universidad de Chile]].
+En este repositorio se almacena el material computacional que complementa al libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] y del [[https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile][Magíster en Políticas Públicas]] de la [[https://uchile.cl][Universidad de Chile]].
 
+# Nico, es posible agregarle algun logo? quizas dame algunas alternativas de color o templates que podamos ir probando, pero manteniendo lo simple
 
-* I. Versiones más actualizadas de los paquetes 
-Es importante destacar que las versiones más recientes de los paquetes antes mencionados se encuentran en el siguiente 
-[[https://github.com/cseljatib/labPackages][web]], para vuestra descarga. Esto se debe a que la frecuencia con la cual se puede
-actualizar un paquete en [[https://r-project.or][el sitio web de R]] es generalmente menor a la cual nosotros realizamos cambios.
+* Instrucciones generales para el correcto uso del presente sitio 
+Como parte del proceso de aprendizaje del libro, se ha diseñado una serie de materiales, dentro de los cuales, los computacionales se enlazan mayormente al uso del software estadístico [[https://r-project.org][R]], y se dividen en:
 
-* II. Paquetes de R
-Para el correcto uso de los scripts, es necesario tener instalados los paquetes =datana= y =biometrics= en su versión de R. 
+** Datos
+Información de variables de diferentes disciplinas, que son usadas para demostrar conceptos en el libro, y/o para realizar ejemplos y ejercicios. Estos datos se encuentran disponibles en las librerías (o paquetes) de R: =datana= y =biometrics=. 
 
-Por lo tanto, debe primero proceder como sigue
+Por lo tanto, debe primero instalarlas como sigue
 
 #+begin_src R
 install.packages("datana")
@@ -42,20 +38,25 @@ Cita del paquete
 citation("datana")
 #+end_src
 
-* III. Flujo de los scripts
-Los scripts son presentados siguiendo un sentido docente.
+Es importante destacar que las versiones más recientes de los paquetes antes mencionados se encuentran en el siguiente 
+[[https://github.com/cseljatib/labPackages][web]], para vuestra descarga, y uso. Esto se debe a que la frecuencia con la cual se puede
+actualizar un paquete en en [[https://cran.r-project.org/][CRAN, el repositorio oficial de R]], es generalmente menor a la cual nosotros realizamos cambios.
 
-** 4) inferencia
+** Scripts
+Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes se encuentran acá disponibles como scripts de [[HTTPS://DEVTOOLS.R-LIB.ORG/][R]].
 
-4.1) [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]]: tiene solo comparacion con valor t-tabulado
+* Flujo de los scripts
+Cada uno de los scripts son presentados siguiendo la estructura de capítulos del libro, y los cuales siguen por lo tanto un sentido lógico docente, para ir reforzando los conceptos expuestos en el texto.
 
-4.2) [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]]: explica ademas al valor-p
+** --> Cap. 4: Inferencia
 
-4.3) [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]]: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
 
-4.4) [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]]: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
++ [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]]: calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
++ [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]]: es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
++ [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]]: relaciona intervalo de confianza con prueba de hipótesis.
++ [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]]: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-/P/
 
-** 6) Regresión lineal simple
+** --> Cap. 6: Regresión lineal simple
 
 
 6.1) [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][modmedia1.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
