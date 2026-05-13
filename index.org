@@ -49,24 +49,24 @@ Los scripts son presentados siguiendo un sentido docente.
 
 4.1) [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]]: tiene solo comparacion con valor t-tabulado
 
-4.2) [[./phipovalorp.r][phipovalorp.r]]: explica ademas al valor-p
+4.2) [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]]: explica ademas al valor-p
 
-4.3) [[./phipointconf.r][phipointconf.r]]: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
+4.3) [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]]: relaciona intervalo de confianza con prueba de hipotesis (no valor-P)
 
-4.4) [[./phipotesisf.r][phipotesisf.r]]: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
+4.4) [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]]: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-P
 
 ** 6) Regresión lineal simple
 
 
-6.1) [[./modmedia1.r][modmedia1.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
+6.1) [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][modmedia1.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
    
-6.2) [[./modmedia2.r][modmedia2.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
+6.2) [[https://cseljatib.github.io/ejerestadistica/modmedia2.r][modmedia2.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
    
-6.1) [[./rls1.r][rls1.r]]: ajuste hasta . Datos: largo de peces
+6.1) [[https://cseljatib.github.io/ejerestadistica/rls1.r][rls1.r]]: ajuste hasta . Datos: largo de peces
    
-6.2) [[./rls2.r][rls2.r]]: ajuste hasta 
+6.2) [[https://cseljatib.github.io/ejerestadistica/rls2.r][rls2.r]]: ajuste hasta 
    
-6.3) [[./rls3.r][rls3.r]]: ajuste hasta 
+6.3) [[https://cseljatib.github.io/ejerestadistica/rls3.r][rls3.r]]: ajuste hasta 
 
 * Sugerencias/errores
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
