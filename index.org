@@ -9,6 +9,17 @@ En este repositorio se almacena el material computacional que complementa al lib
 
 # Nico, es posible agregarle algun logo? quizas dame algunas alternativas de color o templates que podamos ir probando, pero manteniendo lo simple
 
+# Re: Se puede editar todo con HTML, en la proxima linea cambiare el color de la tabla de contenidos
+#+html_head: <style>#table-of-contents{background: #680101;}</style>
+
+# Ahora cambio el color del fondo del indice
+#+html_head: <style>#table-of-contents h2{background: #A0911D;}</style>
+
+# Aca uso macros para ahorrar escritura
+# Cambio color de la letra en la tabla de contenidos
+#+macro: color-letras-toc #+html_head: <style>#table-of-contents a{color: #$1;}</style>
+{{{color-letras-toc(00ffab)}}}
+
 * Instrucciones generales para el correcto uso del presente sitio 
 Como parte del proceso de aprendizaje del libro, se ha diseñado una serie de materiales, dentro de los cuales, los computacionales se enlazan mayormente al uso del software estadístico [[https://r-project.org][R]], y se dividen en:
 
@@ -48,26 +59,39 @@ Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes 
 * Flujo de los scripts
 Cada uno de los scripts son presentados siguiendo la estructura de capítulos del libro, y los cuales siguen por lo tanto un sentido lógico docente, para ir reforzando los conceptos expuestos en el texto.
 
-** --> Cap. 4: Inferencia
+** → Cap. 4: Inferencia
 
 
-+ [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]]: calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
-+ [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]]: es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
-+ [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]]: relaciona intervalo de confianza con prueba de hipótesis.
-+ [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]]: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-/P/
-
-** --> Cap. 6: Regresión lineal simple
+- [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]] :: Calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
+- [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]] :: Es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
+- [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]] :: Relaciona intervalo de confianza con prueba de hipótesis.
+- [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]] :: Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-/P/
 
 
-6.1) [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][modmedia1.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
+** → Cap. 5: Alternativas de estimación
+
+- [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][modmedia1.r]] :: Ajuste modelo del simple promedio.
+  - Datos: largo de peces.
+- [[https://cseljatib.github.io/ejerestadistica/modmedia2.r][modmedia2.r]] :: Ajuste modelo del simple promedio.
+  - Datos: largo de peces.
+
+** → Cap. 6: Regresión lineal simple
    
-6.2) [[https://cseljatib.github.io/ejerestadistica/modmedia2.r][modmedia2.r]]: ajuste modelo del simple promedio. Datos: largo de peces.
-   
-6.1) [[https://cseljatib.github.io/ejerestadistica/rls1.r][rls1.r]]: ajuste hasta . Datos: largo de peces
-   
-6.2) [[https://cseljatib.github.io/ejerestadistica/rls2.r][rls2.r]]: ajuste hasta 
-   
-6.3) [[https://cseljatib.github.io/ejerestadistica/rls3.r][rls3.r]]: ajuste hasta 
+- [[https://cseljatib.github.io/ejerestadistica/rls1.r][rls1.r]] :: Ajuste hasta
+- [[https://cseljatib.github.io/ejerestadistica/rls2.r][rls2.r]] :: Ajuste hasta
+- [[https://cseljatib.github.io/ejerestadistica/rls3.r][rls3.r]] :: Ajuste hasta 
+
+** → Cap. 7: Regresión lineal múltiple
+- [[https://cseljatib.github.io/ejerestadistica/rlm1ejea.r][rlm1ejea.r]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/rlm2ejea.r][rlm2ejea.r]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/rlm3ejea.r][rlm3ejea.r]] :: Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/regrematri.r][regrematri.r]] :: Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante *álgebra matricial*.
+
+
+** → Cap. 8: Residuales
+
+
+** → Cap. 9: Supuestos de un modelo de regresión
 
 * Sugerencias/errores
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].

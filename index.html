@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-05-13 Wed 13:16 -->
+<!-- 2026-05-13 Wed 17:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sitio del _libro Estadística Aplicada e Inferencial_</title>
@@ -19,6 +19,9 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/code-copy.js"></script>
+<style>#table-of-contents{background: #680101;}</style>
+<style>#table-of-contents h2{background: #A0911D;}</style>
+<style>#table-of-contents a{color: #00ffab;}</style>
 </head>
 <body>
 <div id="content" class="content">
@@ -27,34 +30,38 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1168e6a">1. Instrucciones generales para el correcto uso del presente sitio</a>
+<li><a href="#orgb0c6830">1. Instrucciones generales para el correcto uso del presente sitio</a>
 <ul>
-<li><a href="#org79a9675">1.1. Datos</a></li>
-<li><a href="#org84d33ef">1.2. Scripts</a></li>
+<li><a href="#orge36fbec">1.1. Datos</a></li>
+<li><a href="#org58fb31c">1.2. Scripts</a></li>
 </ul>
 </li>
-<li><a href="#org5a6bcee">2. Flujo de los scripts</a>
+<li><a href="#org18fef62">2. Flujo de los scripts</a>
 <ul>
-<li><a href="#org4eb0df2">2.1. &#x2013;&gt; Cap. 4: Inferencia</a></li>
-<li><a href="#org9e6323b">2.2. &#x2013;&gt; Cap. 6: Regresión lineal simple</a></li>
+<li><a href="#org8c8335b">2.1. → Cap. 4: Inferencia</a></li>
+<li><a href="#org90c29e4">2.2. → Cap. 5: Alternativas de estimación</a></li>
+<li><a href="#orge4ee891">2.3. → Cap. 6: Regresión lineal simple</a></li>
+<li><a href="#org9b55b25">2.4. → Cap. 7: Regresión lineal múltiple</a></li>
+<li><a href="#orgcccbc42">2.5. → Cap. 8: Residuales</a></li>
+<li><a href="#org722d986">2.6. → Cap. 9: Supuestos de un modelo de regresión</a></li>
 </ul>
 </li>
-<li><a href="#orgc91fffe">3. Sugerencias/errores</a></li>
+<li><a href="#org9365045">3. Sugerencias/errores</a></li>
 </ul>
 </div>
 </div>
 <p>
 En este repositorio se almacena el material computacional que complementa al libro <b>Estadística Aplicada e Inferencial</b> del Profesor <a href="https://eljatib.com">Christian Salas-Eljatib</a> del <a href="https://biometriaforestal.uchile.cl">Laboratorio de Biometría y Modelación Forestal</a> y del <a href="https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile">Magíster en Políticas Públicas</a> de la <a href="https://uchile.cl">Universidad de Chile</a>.
 </p>
-<div id="outline-container-org1168e6a" class="outline-2">
-<h2 id="org1168e6a"><span class="section-number-2">1.</span> Instrucciones generales para el correcto uso del presente sitio</h2>
+<div id="outline-container-orgb0c6830" class="outline-2">
+<h2 id="orgb0c6830"><span class="section-number-2">1.</span> Instrucciones generales para el correcto uso del presente sitio</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Como parte del proceso de aprendizaje del libro, se ha diseñado una serie de materiales, dentro de los cuales, los computacionales se enlazan mayormente al uso del software estadístico <a href="https://r-project.org">R</a>, y se dividen en:
 </p>
 </div>
-<div id="outline-container-org79a9675" class="outline-3">
-<h3 id="org79a9675"><span class="section-number-3">1.1.</span> Datos</h3>
+<div id="outline-container-orge36fbec" class="outline-3">
+<h3 id="orge36fbec"><span class="section-number-3">1.1.</span> Datos</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Información de variables de diferentes disciplinas, que son usadas para demostrar conceptos en el libro, y/o para realizar ejemplos y ejercicios. Estos datos se encuentran disponibles en las librerías (o paquetes) de R: <code>datana</code> y <code>biometrics</code>. 
@@ -102,8 +109,8 @@ actualizar un paquete en en <a href="https://cran.r-project.org/">CRAN, el repos
 </p>
 </div>
 </div>
-<div id="outline-container-org84d33ef" class="outline-3">
-<h3 id="org84d33ef"><span class="section-number-3">1.2.</span> Scripts</h3>
+<div id="outline-container-org58fb31c" class="outline-3">
+<h3 id="org58fb31c"><span class="section-number-3">1.2.</span> Scripts</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes se encuentran acá disponibles como scripts de <a href="https://devtools.r-lib.org/">R</a>.
@@ -111,51 +118,71 @@ Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes 
 </div>
 </div>
 </div>
-<div id="outline-container-org5a6bcee" class="outline-2">
-<h2 id="org5a6bcee"><span class="section-number-2">2.</span> Flujo de los scripts</h2>
+<div id="outline-container-org18fef62" class="outline-2">
+<h2 id="org18fef62"><span class="section-number-2">2.</span> Flujo de los scripts</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Cada uno de los scripts son presentados siguiendo la estructura de capítulos del libro, y los cuales siguen por lo tanto un sentido lógico docente, para ir reforzando los conceptos expuestos en el texto.
 </p>
 </div>
-<div id="outline-container-org4eb0df2" class="outline-3">
-<h3 id="org4eb0df2"><span class="section-number-3">2.1.</span> &#x2013;&gt; Cap. 4: Inferencia</h3>
+<div id="outline-container-org8c8335b" class="outline-3">
+<h3 id="org8c8335b"><span class="section-number-3">2.1.</span> → Cap. 4: Inferencia</h3>
 <div class="outline-text-3" id="text-2-1">
-<ul class="org-ul">
-<li><a href="https://cseljatib.github.io/ejerestadistica/phipotesis.r">phipotesis.r</a>: calcula valor de test estadístico de <i>t</i>, así como el valor respectivo de la distribución de <i>t</i> para un nivel de significancia y los grados de libertad del ejemplo.</li>
-<li><a href="https://cseljatib.github.io/ejerestadistica/phipovalorp.r">phipovalorp.r</a>: es similar al anterior, aunque ahora además se calcula el denominado valor-<i>P</i> del test estadístico.</li>
-<li><a href="https://cseljatib.github.io/ejerestadistica/phipointconf.r">phipointconf.r</a>: relaciona intervalo de confianza con prueba de hipótesis.</li>
-<li><a href="https://cseljatib.github.io/ejerestadistica/phipotesisf.r">phipotesisf.r</a>: version full, relaciona intervalo de confianza con prueba de hipotesis y valor-<i>P</i></li>
-</ul>
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesis.r">phipotesis.r</a></dt><dd>Calcula valor de test estadístico de <i>t</i>, así como el valor respectivo de la distribución de <i>t</i> para un nivel de significancia y los grados de libertad del ejemplo.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipovalorp.r">phipovalorp.r</a></dt><dd>Es similar al anterior, aunque ahora además se calcula el denominado valor-<i>P</i> del test estadístico.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipointconf.r">phipointconf.r</a></dt><dd>Relaciona intervalo de confianza con prueba de hipótesis.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesisf.r">phipotesisf.r</a></dt><dd>Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-<i>P</i></dd>
+</dl>
 </div>
 </div>
-<div id="outline-container-org9e6323b" class="outline-3">
-<h3 id="org9e6323b"><span class="section-number-3">2.2.</span> &#x2013;&gt; Cap. 6: Regresión lineal simple</h3>
+<div id="outline-container-org90c29e4" class="outline-3">
+<h3 id="org90c29e4"><span class="section-number-3">2.2.</span> → Cap. 5: Alternativas de estimación</h3>
 <div class="outline-text-3" id="text-2-2">
-<p>
-6.1) <a href="https://cseljatib.github.io/ejerestadistica/modmedia1.r">modmedia1.r</a>: ajuste modelo del simple promedio. Datos: largo de peces.
-</p>
-
-<p>
-6.2) <a href="https://cseljatib.github.io/ejerestadistica/modmedia2.r">modmedia2.r</a>: ajuste modelo del simple promedio. Datos: largo de peces.
-</p>
-
-<p>
-6.1) <a href="https://cseljatib.github.io/ejerestadistica/rls1.r">rls1.r</a>: ajuste hasta . Datos: largo de peces
-</p>
-
-<p>
-6.2) <a href="https://cseljatib.github.io/ejerestadistica/rls2.r">rls2.r</a>: ajuste hasta 
-</p>
-
-<p>
-6.3) <a href="https://cseljatib.github.io/ejerestadistica/rls3.r">rls3.r</a>: ajuste hasta 
-</p>
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia1.r">modmedia1.r</a></dt><dd>Ajuste modelo del simple promedio.
+<ul class="org-ul">
+<li>Datos: largo de peces.</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia2.r">modmedia2.r</a></dt><dd>Ajuste modelo del simple promedio.
+<ul class="org-ul">
+<li>Datos: largo de peces.</li>
+</ul></dd>
+</dl>
 </div>
 </div>
+<div id="outline-container-orge4ee891" class="outline-3">
+<h3 id="orge4ee891"><span class="section-number-3">2.3.</span> → Cap. 6: Regresión lineal simple</h3>
+<div class="outline-text-3" id="text-2-3">
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls1.r">rls1.r</a></dt><dd>Ajuste hasta</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls2.r">rls2.r</a></dt><dd>Ajuste hasta</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls3.r">rls3.r</a></dt><dd>Ajuste hasta</dd>
+</dl>
 </div>
-<div id="outline-container-orgc91fffe" class="outline-2">
-<h2 id="orgc91fffe"><span class="section-number-2">3.</span> Sugerencias/errores</h2>
+</div>
+<div id="outline-container-org9b55b25" class="outline-3">
+<h3 id="org9b55b25"><span class="section-number-3">2.4.</span> → Cap. 7: Regresión lineal múltiple</h3>
+<div class="outline-text-3" id="text-2-4">
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm1ejea.r">rlm1ejea.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm2ejea.r">rlm2ejea.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm3ejea.r">rlm3ejea.r</a></dt><dd>Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/regrematri.r">regrematri.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante <b>álgebra matricial</b>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgcccbc42" class="outline-3">
+<h3 id="orgcccbc42"><span class="section-number-3">2.5.</span> → Cap. 8: Residuales</h3>
+</div>
+
+
+<div id="outline-container-org722d986" class="outline-3">
+<h3 id="org722d986"><span class="section-number-3">2.6.</span> → Cap. 9: Supuestos de un modelo de regresión</h3>
+</div>
+</div>
+<div id="outline-container-org9365045" class="outline-2">
+<h2 id="org9365045"><span class="section-number-2">3.</span> Sugerencias/errores</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a <a href="mailto:christian.salas@uchile.cl">este email</a>.
@@ -165,7 +192,7 @@ En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a <
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Christian Salas-Eljatib</p>
-<p class="date">Created: 2026-05-13 Wed 13:16</p>
+<p class="date">Created: 2026-05-13 Wed 17:07</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
