@@ -47,7 +47,7 @@ Los scripts son presentados siguiendo un sentido docente.
 
 ** 4) inferencia
 
-4.1) [[./phipotesis.r][phipotesis.r]]: tiene solo comparacion con valor t-tabulado
+4.1) [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]]: tiene solo comparacion con valor t-tabulado
 
 4.2) [[./phipovalorp.r][phipovalorp.r]]: explica ademas al valor-p
 
