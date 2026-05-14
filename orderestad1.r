@@ -1,6 +1,6 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
-##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple ║
+##+║ Sobre:  Calculo de estadisticos de orden                      ║
 ##-║ Detalles: Realiza un muestreo aleatorio simple sobre una      ║
 ##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e   ║
 ## ║ intervalo de confianza estadistico del estimador del          ║
@@ -23,11 +23,16 @@ head(casen)
 #?casen
 df<-casen
 dim(df)
-summary(df$edad)
-table(df$comuna)
 
-##- filtro, emplear solo los datos de la comuna de Temuco
-df<-subset(df, comuna=="Temuco")
+
+descstat(data=df,y=c("edad","ytot","ytotcor"))
+descstat(data=subset(df,edad>=18),y=c("edad","ytot","ytotcor"))
+descstat(data=subset(df,activ=="Ocupados"),y=c("edad","ytot","ytotcor"))
+descstat(data=subset(df,edad >=18 & ytotcor>0),y=c("edad","ytot","ytotcor"))
+descstat(data=subset(df,edad >=18 & ytotcor>0&activ=="Ocupados"),y=c("edad","ytot","ytotcor"))
+
+##- filtro, emplear solo los datos para adultos con ingresos
+df<-subset(df, edad >=18 & ytotcor>0&activ=="Ocupados")
 
 ##- verificando las nuevas dimensiones
 dim(df)
@@ -37,11 +42,12 @@ N<-nrow(df)
 N
 
 ##! Estadistica descriptiva
-descstat(data=df,y=c("edad","ytot"))
+descstat(data=df,y=c("edad","ytot","ytotcor"))
 
 #variable aleatoria de interes: la edad
 hist(df$edad)
 
+descstat(data=df,y=c("edad","ytot","ytotcor"),factvar = "sexo")
 
 ##%%%%%%%%%%%%%%%%
 ##> II. Estrategia de muestreo
@@ -153,3 +159,20 @@ message("Aca termina el script!")
 #+´¨)
 #+¸.•´¸.•*´¨) ¸.•*¨)
 #+(¸.•´ (¸.•` ¤ Fin del script
+
+sort(tapply(df$edad,df$comuna,length),decreasing = TRUE)
+df$perso.code<-paste(df$id.vivienda,"-",df$id.persona,"-",df$edad,"-",df$sexo,sep = "")
+length(unique(df$id.vivperso))
+sort(tapply(df$edad,df$id.vivperso,length),decreasing = TRUE)
+ ## 3657905-1  4239306-1  1164007-1  1216807-1  1314806-1  1437407-1  1437407-2 
+ ##         6          6          5          5          5          5          5 
+ ## 1492408-1  1639921-1  1639922-1  2130505-1  4153901-1  4153901-2  1059002-1 
+ ##         5          5          5          5          5          5          4 
+ ## 1216807-2  1314806-2  1367903-1  1437407-3  1584005-1  1621508-1  1704908-1 
+ ##         4          4          4          4          4          4
+##         4
+head(subset(df, id.vivperso=="3657905-1"))
+head(subset(df, activ=="Ocupados" & edad >=18 & ytot==0))
+
+
+str(df)

@@ -61,7 +61,6 @@ Cada uno de los scripts son presentados siguiendo la estructura de capítulos de
 
 ** → Cap. 4: Inferencia
 
-
 - [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]] :: Calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
 - [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]] :: Es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
 - [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]] :: Relaciona intervalo de confianza con prueba de hipótesis.
