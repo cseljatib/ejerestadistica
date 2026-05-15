@@ -2,7 +2,7 @@
 ##*║ Script academico                                              ║
 ##+║ Sobre:  Calculo de estadisticos de orden                      ║
 ##-║ Detalles: Cuartiles, quintiles y deciles.                     ║
-##!║ Ejemplo: Datos de edad provenientes de la encuesta CASEN.     ║
+##!║ Ejemplo: Datos de ingreso provenientes de la encuesta CASEN.  ║
 ##-║-----------------------------------------------------------    ║
 ## ║                                                               ║
 ##>║ Profesor: Christian Salas Eljatib                             ║
@@ -22,8 +22,17 @@ df<-casen
 dim(df)
 n.ori<-nrow(df)
 
-##- filtro, emplear solo los datos para edades mayores a 0
-df<-subset(df, edad >=1)
+
+descstat(data=df,y=c("edad","ytot","ytotcor"))
+table(df$activ)
+
+##! filtros impuestos
+mayoria.edad<-18 #anhos
+ing.total.min<-0 #debe ser mayor a este valor
+acti.filtro<-"Ocupados"
+
+##- aplicando las condiciones para esta sub-poblacion 
+df<-subset(df, edad >=18 & ytotcor>0&activ=="Ocupados")
 ##- verificando las nuevas dimensiones
 dim(df)
 
@@ -34,23 +43,23 @@ N
 names(df)
 
 ##! Estadistica descriptiva
-descstat(data=df,y=c("edad","ypc","ytotcorh"))
+descstat(data=df,y=c("edad","ypc","ytotcor"))
 
 
-##*variable aleatoria de interes: la edad
+##*variable aleatoria de interes: ingreso total corregido
 ##! Distribucion
-hist(df$edad)
-boxplot(df$edad)
+hist(df$ytotcor)
+boxplot(df$ytotcor)
 
 
 ##%%%%%%%%%%%%%%%%
 ##> II. Estadisticos de orden
 ##%%%%%%%%%%%%%%%%
 ##! los cuartiles
-descstat(data=df,y=c("edad"),full=TRUE,eng=FALSE)
+descstat(data=df,y=c("ytotcor"),full=TRUE,eng=FALSE)
 ## ahi aparecen como percentil 25, mediana y percentil 75
 ##* tambien lo puede obtener mediante 
-cuartiles<-quantile(df$edad)
+cuartiles<-quantile(df$ytotcor)
 cuartiles
 
 ##* entonces, el primer cuartil es 
@@ -63,7 +72,7 @@ cuartiles[4]
 ##  minimo y maximo respectivamente
 
 ##! Los quintiles
-quintiles<-quantile(df$edad, probs = seq(0.2,.8,by=0.2))
+quintiles<-quantile(df$ytotcor, probs = seq(0.2,.8,by=0.2))
 quintiles
 ##* entonces, el primer quintil es 
 quintiles[1]
@@ -76,7 +85,7 @@ quintiles[4]
 
 
 ##! Los deciles
-deciles<-quantile(df$edad, probs = seq(0.1,.9,by=0.1))
+deciles<-quantile(df$ytotcor, probs = seq(0.1,.9,by=0.1))
 deciles
 ##* entonces, el primer decil es 
 deciles[1]
