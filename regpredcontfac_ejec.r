@@ -59,6 +59,7 @@ boxplot(df$vary)
 
 hist(df$vary)
 
+library(lattice)
 histogram(~vary,data=df)
 
 
