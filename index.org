@@ -10,15 +10,25 @@ En este repositorio se almacena el material computacional que complementa al lib
 # Nico, es posible agregarle algun logo? quizas dame algunas alternativas de color o templates que podamos ir probando, pero manteniendo lo simple
 
 # Re: Se puede editar todo con HTML, en la proxima linea cambiare el color de la tabla de contenidos
-#+html_head: <style>#table-of-contents{background: #680101;}</style>
+#+html_head: <style>#table-of-contents{background: #23252F;}</style>
 
 # Ahora cambio el color del fondo del indice
-#+html_head: <style>#table-of-contents h2{background: #A0911D;}</style>
+#+html_head: <style>#table-of-contents h2{background: #282A36;}</style>
 
 # Aca uso macros para ahorrar escritura
-# Cambio color de la letra en la tabla de contenidos
+# Personalizando TOC
 #+macro: color-letras-toc #+html_head: <style>#table-of-contents a{color: #$1;}</style>
-{{{color-letras-toc(00ffab)}}}
+{{{color-letras-toc(BBDEFB)}}}
+#+macro: color-post-toc-bg #+html_head: <style>#postamble{background: #$1;}</style>
+{{{color-post-toc-bg(23252F)}}}
+#+macro: color-toc-separador #+html_head: <style>#postamble{border-top: solid 10px #$1;}</style>
+{{{color-toc-separador(282A36)}}}
+
+# Personalizando el cuerpo de la pagina
+#+macro: color-letras-cuerpo #+html_head: <style>#content{color: #$1;}</style>
+{{{color-letras-cuerpo(404040)}}}
+#+macro: color-fondo-cuerpo #+html_head: <style>#content{background: #$1;}</style>
+{{{color-fondo-cuerpo(fff)}}}
 
 * Instrucciones generales para el correcto uso del presente sitio 
 Como parte del proceso de aprendizaje del libro, se ha diseñado una serie de materiales, dentro de los cuales, los computacionales se enlazan mayormente al uso del software estadístico [[https://r-project.org][R]], y se dividen en:
@@ -61,30 +71,97 @@ Cada uno de los scripts son presentados siguiendo la estructura de capítulos de
 
 ** → Cap. 4: Inferencia
 
-- [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][phipotesis.r]] :: Calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
-- [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][phipovalorp.r]] :: Es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
-- [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][phipointconf.r]] :: Relaciona intervalo de confianza con prueba de hipótesis.
-- [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][phipotesisf.r]] :: Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-/P/
+- [[https://cseljatib.github.io/ejerestadistica/phipotesis.r][=phipotesis.r=]] :: Calcula valor de test estadístico de /t/, así como el valor respectivo de la distribución de /t/ para un nivel de significancia y los grados de libertad del ejemplo.
+- [[https://cseljatib.github.io/ejerestadistica/phipovalorp.r][=phipovalorp.r=]] :: Es similar al anterior, aunque ahora además se calcula el denominado valor-/P/ del test estadístico.
+- [[https://cseljatib.github.io/ejerestadistica/phipointconf.r][=phipointconf.r=]] :: Relaciona intervalo de confianza con prueba de hipótesis.
+- [[https://cseljatib.github.io/ejerestadistica/phipotesisf.r][=phipotesisf.r=]] :: Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-/P/
 
 
 ** → Cap. 5: Alternativas de estimación
 
-- [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][modmedia1.r]] :: Ajuste modelo del simple promedio.
+- [[https://cseljatib.github.io/ejerestadistica/modmedia1.r][=modmedia1.r=]] :: Ajuste modelo del simple promedio.
   - Datos: largo de peces.
-- [[https://cseljatib.github.io/ejerestadistica/modmedia2.r][modmedia2.r]] :: Ajuste modelo del simple promedio.
+- [[https://cseljatib.github.io/ejerestadistica/modmedia2.r][=modmedia2.r=]] :: Ajuste modelo del simple promedio.
   - Datos: largo de peces.
 
-** → Cap. 6: Regresión lineal simple
+** → Cap. 6: Regresión lineal simple (RLS)
    
-- [[https://cseljatib.github.io/ejerestadistica/rls1.r][rls1.r]] :: Ajuste hasta
-- [[https://cseljatib.github.io/ejerestadistica/rls2.r][rls2.r]] :: Ajuste hasta
-- [[https://cseljatib.github.io/ejerestadistica/rls3.r][rls3.r]] :: Ajuste hasta 
+*** Una introducción a regresión lineal
+- [[https://cseljatib.github.io/ejerestadistica/rls1ejea.r][=rls1ejea.r=]] (ejemplo A) :: Ajuste modelo de regresion lineal simple, empleando estimador de mínimos cuadrados. Entre otras cosas, en este ejercicio se revisan los parámetros estimados del modelo y se usa el modelo para predecir dado un valor para la variable predictora.
+  - Datos: Tamaño de peces (=fishfgrowth2=).
+  - Ejemplo: Relación entre largo y edad de peces.
+- [[https://cseljatib.github.io/ejerestadistica/rls1ejeb.r][=rls1ejeb.r=]] (ejemplo B) :: Ajuste modelo de regresion lineal simple, empleando estimador de mínimos cuadrados. Entre otras cosas, en este ejercicio se revisan los parámetros estimados del modelo y se usa el modelo para predecir dado un valor para la variable predictora.
+  - Datos: Gasto social a nivel país (=sociecon=).
+  - Ejemplo: Relación entre pobreza y gasto social.
+
+
+*** Mínimos cuadrados (en RLS)
+Se explica desde un punto de vista teórico-aplicado como se realiza la estimación por mínimos cuadrados  en el caso de un modelo de regresón lineal simple. Complementar con la siguiente [[https://eljatib.com/coursework/estadistica/ols/mincuadrados][aplicación web]].
+
+*** Ejemplo de ajuste modelo RLS
+Se revisan los valores de los parámetros estimados y como estimar la variable respuesta a partir de un valor dado para la variable predictora.
+
+- [[https://cseljatib.github.io/ejerestadistica/rls2ejea.r][=rls2ejea.r=]] (ejemplo A) :: Valores esperados del modelo ajustado. Entre otras cosas, en este ejercicio se calculan los valores esperados para un modelo ajustado y se representa lo anterior gráficamente sobre la dispersión de los datos.
+  - Datos: Tamaño de peces (=fishfgrowth2=).
+  - Ejemplo: Relación entre largo y edad de peces
+- [[https://cseljatib.github.io/ejerestadistica/rls2ejeb.r][=rls2ejeb.r=]] (ejemplo B) :: Valores esperados del modelo ajustado. Entre otras cosas, en este ejercicio se calculan los valores esperados para un modelo ajustado y se representa lo anterior graficamente sobre la dispersion de los datos.
+  - Datos: Gasto social a nivel país (=sociecon=).
+  - Ejemplo: Relación entre pobreza y gasto social.
+
+
+
+*** Empleando un modelo de regresión ajustado
+Cálculo de valores ajustados y residuales, y gráficos para evaluar el ajuste sobre la dispersión de la muestra.
+
+- [[https://cseljatib.github.io/ejerestadistica/rls3ejea.r][=rls3ejea.r=]] (ejemplo A) :: Valores ajustados y residuales. Entre otras cosas, en este ejercicio para cada observacion se calculan el valor ajustado por el modelo y su respectivo residual, y se realizan diferentes gráficos basados en los valores ajustados y residuales.
+  - Datos: Tamaño de peces (=fishfgrowth2=).
+  - Ejemplo: Relación entre largo y edad de peces
+- [[https://cseljatib.github.io/ejerestadistica/rls3ejeb.r][=rls3ejeb.r=]] (ejemplo b) :: Valores ajustados y residuales. Entre otras cosas, en este ejercicio para cada observacion se calculan el valor ajustado por el modelo y su respectivo residual, y se realizan diferentes gráficos basados en los valores ajustados y residuales.
+  - Datos: Gasto social a nivel país (=sociecon=).
+  - Ejemplo: Relación entre pobreza y gasto social.
+
+
+*** Prueba de hipótesis en regresión
+Se enfatiza en los test de hipótesis que normalmente se realizan en modelos de regresión.
+
+- [[https://cseljatib.github.io/ejerestadistica/rls4ejea.r][=rls4ejea.r=]] (ejemplo A) :: Valores ajustados y residuales. Se ajusta modelo y se revisa test de hipotesis, empleando diferentes niveles de significancia. Se calculan intervalos confidenciales.
+  - Datos: Tamaño de peces (=fishfgrowth2=).
+  - Ejemplo: Relación entre largo y edad de peces
+- [[https://cseljatib.github.io/ejerestadistica/rls4ejeb.r][=rls4ejeb.r=]] (ejemplo B) :: Valores ajustados y residuales. Se ajusta modelo y se revisa test de hipotesis, empleando diferentes niveles de significancia. Se calculan intervalos confidenciales.
+  - Datos: Gasto social a nivel país (=sociecon=).
+  - Ejemplo: Relación entre pobreza y gasto social.
+
+    #+begin_note
+Detenerse en la parte del script donde se muestra el resumen del modelo ajustado y analizar los resultados
+#+end_note
+
+
+*** Transformando variables en un modelo de regresión
+Un modelo estadístico lineal puede representar también relaciones curvilíneas entre las variables de interés.
+
+- [[https://cseljatib.github.io/ejerestadistica/comportarls1ejea.r][=comportarls1ejea.r=]] (ejemplo A) :: Comportamiento de 3 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan tres modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+  - Datos: Tamaño de árboles (=idahohd2=).
+  - Ejemplo: Relación alométrica entre altura y diámetro.
+- [[https://cseljatib.github.io/ejerestadistica/comportarls1ejeb.r][=comportarls1ejeb.r=]] (ejemplo B) :: Comportamiento de 4 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan cuatro modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+  - Datos: Área y peso foliar (=leafw2=).
+  - Ejemplo: Relación alométrica entre variables de hojas.
+- [[https://cseljatib.github.io/ejerestadistica/comportarls2ejec.r][=comportarls2ejeC.r=]] (ejemplo C) :: Comportamiento de 4 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan cuatro modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+  - Datos: Tamaño de peces (=fishfgrowth2=).
+  - Ejemplo: Relación entre largo y edad de peces.
+
+
+*** Inervalos de estimación vs. de predicción
+Se construyen intervalos confidenciales para valores ajustados y para valores predichos, a partir del ajuste de un modelo RLS.
+
+- [[https://cseljatib.github.io/ejerestadistica/intpredslr.r][=intpredslr.r=]] :: Intervalos de confianza para valores ajustados y predichos. Muestra intervalos mencionados a partir de un modelo de regresion lineal simple.
+  - Datos: Ozono (=airnyc2=).
+  - Ejemplo: Relación entre variables astmosféricas.
 
 ** → Cap. 7: Regresión lineal múltiple
-- [[https://cseljatib.github.io/ejerestadistica/rlm1ejea.r][rlm1ejea.r]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
-- [[https://cseljatib.github.io/ejerestadistica/rlm2ejea.r][rlm2ejea.r]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
-- [[https://cseljatib.github.io/ejerestadistica/rlm3ejea.r][rlm3ejea.r]] :: Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.
-- [[https://cseljatib.github.io/ejerestadistica/regrematri.r][regrematri.r]] :: Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante *álgebra matricial*.
+- [[https://cseljatib.github.io/ejerestadistica/rlm1ejea.r][=rlm1ejea.r=]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/rlm2ejea.r][=rlm2ejea.r=]] :: Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/rlm3ejea.r][=rlm3ejea.r=]] :: Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.
+- [[https://cseljatib.github.io/ejerestadistica/regrematri.r][=regrematri.r=]] :: Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante *álgebra matricial*.
 
 
 ** → Cap. 8: Residuales

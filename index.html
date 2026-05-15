@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<!-- 2026-05-13 Wed 17:30 -->
+<!-- 2026-05-15 Fri 16:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sitio del _libro Estadística Aplicada e Inferencial_</title>
@@ -19,9 +19,13 @@
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/code-copy.js"></script>
-<style>#table-of-contents{background: #680101;}</style>
-<style>#table-of-contents h2{background: #A0911D;}</style>
-<style>#table-of-contents a{color: #00ffab;}</style>
+<style>#table-of-contents{background: #23252F;}</style>
+<style>#table-of-contents h2{background: #282A36;}</style>
+<style>#table-of-contents a{color: #BBDEFB;}</style>
+<style>#postamble{background: #23252F;}</style>
+<style>#postamble{border-top: solid 10px #282A36;}</style>
+<style>#content{color: #404040;}</style>
+<style>#content{background: #fff;}</style>
 </head>
 <body>
 <div id="content" class="content">
@@ -30,38 +34,48 @@
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc7e1695">1. Instrucciones generales para el correcto uso del presente sitio</a>
+<li><a href="#org4968def">1. Instrucciones generales para el correcto uso del presente sitio</a>
 <ul>
-<li><a href="#orgd16df12">1.1. Datos</a></li>
-<li><a href="#orgf2b325a">1.2. Scripts</a></li>
+<li><a href="#org270b81d">1.1. Datos</a></li>
+<li><a href="#orgd89a9e0">1.2. Scripts</a></li>
 </ul>
 </li>
-<li><a href="#org6cc5fbd">2. Flujo de los scripts</a>
+<li><a href="#org3e5e0ae">2. Flujo de los scripts</a>
 <ul>
-<li><a href="#org8ecb8a1">2.1. → Cap. 4: Inferencia</a></li>
-<li><a href="#orgda0387f">2.2. → Cap. 5: Alternativas de estimación</a></li>
-<li><a href="#org25b4123">2.3. → Cap. 6: Regresión lineal simple</a></li>
-<li><a href="#org115de7d">2.4. → Cap. 7: Regresión lineal múltiple</a></li>
-<li><a href="#orgbbf57a7">2.5. → Cap. 8: Residuales</a></li>
-<li><a href="#orgd8917e5">2.6. → Cap. 9: Supuestos de un modelo de regresión</a></li>
+<li><a href="#orge50a886">2.1. → Cap. 4: Inferencia</a></li>
+<li><a href="#org9e5707c">2.2. → Cap. 5: Alternativas de estimación</a></li>
+<li><a href="#org3317629">2.3. → Cap. 6: Regresión lineal simple (RLS)</a>
+<ul>
+<li><a href="#orgb8c0d48">2.3.1. Una introducción a regresión lineal</a></li>
+<li><a href="#org1a47e83">2.3.2. Mínimos cuadrados (en RLS)</a></li>
+<li><a href="#orgbe38c9a">2.3.3. Ejemplo de ajuste modelo RLS</a></li>
+<li><a href="#org178e051">2.3.4. Empleando un modelo de regresión ajustado</a></li>
+<li><a href="#org4a5d450">2.3.5. Prueba de hipótesis en regresión</a></li>
+<li><a href="#org175c686">2.3.6. Transformando variables en un modelo de regresión</a></li>
+<li><a href="#org3c8647d">2.3.7. Inervalos de estimación vs. de predicción</a></li>
 </ul>
 </li>
-<li><a href="#orgaec8626">3. Sugerencias/errores</a></li>
+<li><a href="#org0befdb0">2.4. → Cap. 7: Regresión lineal múltiple</a></li>
+<li><a href="#orgd6e82cd">2.5. → Cap. 8: Residuales</a></li>
+<li><a href="#org23af535">2.6. → Cap. 9: Supuestos de un modelo de regresión</a></li>
+</ul>
+</li>
+<li><a href="#orgafd8804">3. Sugerencias/errores</a></li>
 </ul>
 </div>
 </div>
 <p>
 En este repositorio se almacena el material computacional que complementa al libro <b>Estadística Aplicada e Inferencial</b> del Profesor <a href="https://eljatib.com">Christian Salas-Eljatib</a> del <a href="https://biometriaforestal.uchile.cl">Laboratorio de Biometría y Modelación Forestal</a> y del <a href="https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile">Magíster en Políticas Públicas</a> de la <a href="https://uchile.cl">Universidad de Chile</a>.
 </p>
-<div id="outline-container-orgc7e1695" class="outline-2">
-<h2 id="orgc7e1695"><span class="section-number-2">1.</span> Instrucciones generales para el correcto uso del presente sitio</h2>
+<div id="outline-container-org4968def" class="outline-2">
+<h2 id="org4968def"><span class="section-number-2">1.</span> Instrucciones generales para el correcto uso del presente sitio</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Como parte del proceso de aprendizaje del libro, se ha diseñado una serie de materiales, dentro de los cuales, los computacionales se enlazan mayormente al uso del software estadístico <a href="https://r-project.org">R</a>, y se dividen en:
 </p>
 </div>
-<div id="outline-container-orgd16df12" class="outline-3">
-<h3 id="orgd16df12"><span class="section-number-3">1.1.</span> Datos</h3>
+<div id="outline-container-org270b81d" class="outline-3">
+<h3 id="org270b81d"><span class="section-number-3">1.1.</span> Datos</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Información de variables de diferentes disciplinas, que son usadas para demostrar conceptos en el libro, y/o para realizar ejemplos y ejercicios. Estos datos se encuentran disponibles en las librerías (o paquetes) de R: <code>datana</code> y <code>biometrics</code>. 
@@ -109,8 +123,8 @@ actualizar un paquete en en <a href="https://cran.r-project.org/">CRAN, el repos
 </p>
 </div>
 </div>
-<div id="outline-container-orgf2b325a" class="outline-3">
-<h3 id="orgf2b325a"><span class="section-number-3">1.2.</span> Scripts</h3>
+<div id="outline-container-orgd89a9e0" class="outline-3">
+<h3 id="orgd89a9e0"><span class="section-number-3">1.2.</span> Scripts</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes se encuentran acá disponibles como scripts de <a href="https://devtools.r-lib.org/">R</a>.
@@ -118,71 +132,205 @@ Algunos ejemplos y ejercicios a ser resueltos en computador por los estudiantes 
 </div>
 </div>
 </div>
-<div id="outline-container-org6cc5fbd" class="outline-2">
-<h2 id="org6cc5fbd"><span class="section-number-2">2.</span> Flujo de los scripts</h2>
+<div id="outline-container-org3e5e0ae" class="outline-2">
+<h2 id="org3e5e0ae"><span class="section-number-2">2.</span> Flujo de los scripts</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Cada uno de los scripts son presentados siguiendo la estructura de capítulos del libro, y los cuales siguen por lo tanto un sentido lógico docente, para ir reforzando los conceptos expuestos en el texto.
 </p>
 </div>
-<div id="outline-container-org8ecb8a1" class="outline-3">
-<h3 id="org8ecb8a1"><span class="section-number-3">2.1.</span> → Cap. 4: Inferencia</h3>
+<div id="outline-container-orge50a886" class="outline-3">
+<h3 id="orge50a886"><span class="section-number-3">2.1.</span> → Cap. 4: Inferencia</h3>
 <div class="outline-text-3" id="text-2-1">
 <dl class="org-dl">
-<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesis.r">phipotesis.r</a></dt><dd>Calcula valor de test estadístico de <i>t</i>, así como el valor respectivo de la distribución de <i>t</i> para un nivel de significancia y los grados de libertad del ejemplo.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/phipovalorp.r">phipovalorp.r</a></dt><dd>Es similar al anterior, aunque ahora además se calcula el denominado valor-<i>P</i> del test estadístico.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/phipointconf.r">phipointconf.r</a></dt><dd>Relaciona intervalo de confianza con prueba de hipótesis.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesisf.r">phipotesisf.r</a></dt><dd>Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-<i>P</i></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesis.r"><code>phipotesis.r</code></a></dt><dd>Calcula valor de test estadístico de <i>t</i>, así como el valor respectivo de la distribución de <i>t</i> para un nivel de significancia y los grados de libertad del ejemplo.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipovalorp.r"><code>phipovalorp.r</code></a></dt><dd>Es similar al anterior, aunque ahora además se calcula el denominado valor-<i>P</i> del test estadístico.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipointconf.r"><code>phipointconf.r</code></a></dt><dd>Relaciona intervalo de confianza con prueba de hipótesis.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/phipotesisf.r"><code>phipotesisf.r</code></a></dt><dd>Version full, relaciona intervalo de confianza con prueba de hipotesis y valor-<i>P</i></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgda0387f" class="outline-3">
-<h3 id="orgda0387f"><span class="section-number-3">2.2.</span> → Cap. 5: Alternativas de estimación</h3>
+<div id="outline-container-org9e5707c" class="outline-3">
+<h3 id="org9e5707c"><span class="section-number-3">2.2.</span> → Cap. 5: Alternativas de estimación</h3>
 <div class="outline-text-3" id="text-2-2">
 <dl class="org-dl">
-<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia1.r">modmedia1.r</a></dt><dd>Ajuste modelo del simple promedio.
+<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia1.r"><code>modmedia1.r</code></a></dt><dd>Ajuste modelo del simple promedio.
 <ul class="org-ul">
 <li>Datos: largo de peces.</li>
 </ul></dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia2.r">modmedia2.r</a></dt><dd>Ajuste modelo del simple promedio.
+<dt><a href="https://cseljatib.github.io/ejerestadistica/modmedia2.r"><code>modmedia2.r</code></a></dt><dd>Ajuste modelo del simple promedio.
 <ul class="org-ul">
 <li>Datos: largo de peces.</li>
 </ul></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org25b4123" class="outline-3">
-<h3 id="org25b4123"><span class="section-number-3">2.3.</span> → Cap. 6: Regresión lineal simple</h3>
+<div id="outline-container-org3317629" class="outline-3">
+<h3 id="org3317629"><span class="section-number-3">2.3.</span> → Cap. 6: Regresión lineal simple (RLS)</h3>
 <div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgb8c0d48" class="outline-4">
+<h4 id="orgb8c0d48"><span class="section-number-4">2.3.1.</span> Una introducción a regresión lineal</h4>
+<div class="outline-text-4" id="text-2-3-1">
 <dl class="org-dl">
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rls1.r">rls1.r</a></dt><dd>Ajuste hasta</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rls2.r">rls2.r</a></dt><dd>Ajuste hasta</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rls3.r">rls3.r</a></dt><dd>Ajuste hasta</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls1ejea.r"><code>rls1ejea.r</code></a> (ejemplo A)</dt><dd>Ajuste modelo de regresion lineal simple, empleando estimador de mínimos cuadrados. Entre otras cosas, en este ejercicio se revisan los parámetros estimados del modelo y se usa el modelo para predecir dado un valor para la variable predictora.
+<ul class="org-ul">
+<li>Datos: Tamaño de peces (<code>fishfgrowth2</code>).</li>
+<li>Ejemplo: Relación entre largo y edad de peces.</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls1ejeb.r"><code>rls1ejeb.r</code></a> (ejemplo B)</dt><dd>Ajuste modelo de regresion lineal simple, empleando estimador de mínimos cuadrados. Entre otras cosas, en este ejercicio se revisan los parámetros estimados del modelo y se usa el modelo para predecir dado un valor para la variable predictora.
+<ul class="org-ul">
+<li>Datos: Gasto social a nivel país (<code>sociecon</code>).</li>
+<li>Ejemplo: Relación entre pobreza y gasto social.</li>
+</ul></dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-org115de7d" class="outline-3">
-<h3 id="org115de7d"><span class="section-number-3">2.4.</span> → Cap. 7: Regresión lineal múltiple</h3>
+<div id="outline-container-org1a47e83" class="outline-4">
+<h4 id="org1a47e83"><span class="section-number-4">2.3.2.</span> Mínimos cuadrados (en RLS)</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Se explica desde un punto de vista teórico-aplicado como se realiza la estimación por mínimos cuadrados  en el caso de un modelo de regresón lineal simple. Complementar con la siguiente <a href="https://eljatib.com/coursework/estadistica/ols/mincuadrados">aplicación web</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe38c9a" class="outline-4">
+<h4 id="orgbe38c9a"><span class="section-number-4">2.3.3.</span> Ejemplo de ajuste modelo RLS</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+Se revisan los valores de los parámetros estimados y como estimar la variable respuesta a partir de un valor dado para la variable predictora.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls2ejea.r"><code>rls2ejea.r</code></a> (ejemplo A)</dt><dd>Valores esperados del modelo ajustado. Entre otras cosas, en este ejercicio se calculan los valores esperados para un modelo ajustado y se representa lo anterior gráficamente sobre la dispersión de los datos.
+<ul class="org-ul">
+<li>Datos: Tamaño de peces (<code>fishfgrowth2</code>).</li>
+<li>Ejemplo: Relación entre largo y edad de peces</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls2ejeb.r"><code>rls2ejeb.r</code></a> (ejemplo B)</dt><dd>Valores esperados del modelo ajustado. Entre otras cosas, en este ejercicio se calculan los valores esperados para un modelo ajustado y se representa lo anterior graficamente sobre la dispersion de los datos.
+<ul class="org-ul">
+<li>Datos: Gasto social a nivel país (<code>sociecon</code>).</li>
+<li>Ejemplo: Relación entre pobreza y gasto social.</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org178e051" class="outline-4">
+<h4 id="org178e051"><span class="section-number-4">2.3.4.</span> Empleando un modelo de regresión ajustado</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+Cálculo de valores ajustados y residuales, y gráficos para evaluar el ajuste sobre la dispersión de la muestra.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls3ejea.r"><code>rls3ejea.r</code></a> (ejemplo A)</dt><dd>Valores ajustados y residuales. Entre otras cosas, en este ejercicio para cada observacion se calculan el valor ajustado por el modelo y su respectivo residual, y se realizan diferentes gráficos basados en los valores ajustados y residuales.
+<ul class="org-ul">
+<li>Datos: Tamaño de peces (<code>fishfgrowth2</code>).</li>
+<li>Ejemplo: Relación entre largo y edad de peces</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls3ejeb.r"><code>rls3ejeb.r</code></a> (ejemplo b)</dt><dd>Valores ajustados y residuales. Entre otras cosas, en este ejercicio para cada observacion se calculan el valor ajustado por el modelo y su respectivo residual, y se realizan diferentes gráficos basados en los valores ajustados y residuales.
+<ul class="org-ul">
+<li>Datos: Gasto social a nivel país (<code>sociecon</code>).</li>
+<li>Ejemplo: Relación entre pobreza y gasto social.</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org4a5d450" class="outline-4">
+<h4 id="org4a5d450"><span class="section-number-4">2.3.5.</span> Prueba de hipótesis en regresión</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Se enfatiza en los test de hipótesis que normalmente se realizan en modelos de regresión.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls4ejea.r"><code>rls4ejea.r</code></a> (ejemplo A)</dt><dd>Valores ajustados y residuales. Se ajusta modelo y se revisa test de hipotesis, empleando diferentes niveles de significancia. Se calculan intervalos confidenciales.
+<ul class="org-ul">
+<li>Datos: Tamaño de peces (<code>fishfgrowth2</code>).</li>
+<li>Ejemplo: Relación entre largo y edad de peces</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rls4ejeb.r"><code>rls4ejeb.r</code></a> (ejemplo B)</dt><dd>Valores ajustados y residuales. Se ajusta modelo y se revisa test de hipotesis, empleando diferentes niveles de significancia. Se calculan intervalos confidenciales.
+<ul class="org-ul">
+<li>Datos: Gasto social a nivel país (<code>sociecon</code>).</li>
+<li><p>
+Ejemplo: Relación entre pobreza y gasto social.
+</p>
+
+<div class="note" id="org397332d">
+<p>
+Detenerse en la parte del script donde se muestra el resumen del modelo ajustado y analizar los resultados
+</p>
+
+</div></li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org175c686" class="outline-4">
+<h4 id="org175c686"><span class="section-number-4">2.3.6.</span> Transformando variables en un modelo de regresión</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+Un modelo estadístico lineal puede representar también relaciones curvilíneas entre las variables de interés.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/comportarls1ejea.r"><code>comportarls1ejea.r</code></a> (ejemplo A)</dt><dd>Comportamiento de 3 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan tres modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+<ul class="org-ul">
+<li>Datos: Tamaño de árboles (<code>idahohd2</code>).</li>
+<li>Ejemplo: Relación alométrica entre altura y diámetro.</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/comportarls1ejeb.r"><code>comportarls1ejeb.r</code></a> (ejemplo B)</dt><dd>Comportamiento de 4 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan cuatro modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+<ul class="org-ul">
+<li>Datos: Área y peso foliar (<code>leafw2</code>).</li>
+<li>Ejemplo: Relación alométrica entre variables de hojas.</li>
+</ul></dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/comportarls2ejec.r"><code>comportarls2ejeC.r</code></a> (ejemplo C)</dt><dd>Comportamiento de 4 modelos ajustados, con diferentes transformaciones de la variable predictora. Se ajustan y se comparan cuatro modelos de regresión lineal simple, describiendo el valor esperado de cada modelo.
+<ul class="org-ul">
+<li>Datos: Tamaño de peces (<code>fishfgrowth2</code>).</li>
+<li>Ejemplo: Relación entre largo y edad de peces.</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org3c8647d" class="outline-4">
+<h4 id="org3c8647d"><span class="section-number-4">2.3.7.</span> Inervalos de estimación vs. de predicción</h4>
+<div class="outline-text-4" id="text-2-3-7">
+<p>
+Se construyen intervalos confidenciales para valores ajustados y para valores predichos, a partir del ajuste de un modelo RLS.
+</p>
+
+<dl class="org-dl">
+<dt><a href="https://cseljatib.github.io/ejerestadistica/intpredslr.r"><code>intpredslr.r</code></a></dt><dd>Intervalos de confianza para valores ajustados y predichos. Muestra intervalos mencionados a partir de un modelo de regresion lineal simple.
+<ul class="org-ul">
+<li>Datos: Ozono (<code>airnyc2</code>).</li>
+<li>Ejemplo: Relación entre variables astmosféricas.</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-org0befdb0" class="outline-3">
+<h3 id="org0befdb0"><span class="section-number-3">2.4.</span> → Cap. 7: Regresión lineal múltiple</h3>
 <div class="outline-text-3" id="text-2-4">
 <dl class="org-dl">
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm1ejea.r">rlm1ejea.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm2ejea.r">rlm2ejea.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm3ejea.r">rlm3ejea.r</a></dt><dd>Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.</dd>
-<dt><a href="https://cseljatib.github.io/ejerestadistica/regrematri.r">regrematri.r</a></dt><dd>Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante <b>álgebra matricial</b>.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm1ejea.r"><code>rlm1ejea.r</code></a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm2ejea.r"><code>rlm2ejea.r</code></a></dt><dd>Ajuste de un modelo de regresión lineal simple y otro múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/rlm3ejea.r"><code>rlm3ejea.r</code></a></dt><dd>Ajuste y comparación de cuatro modelos de regresión lineal múltiple, empleando estimador de mínimos cuadrados.</dd>
+<dt><a href="https://cseljatib.github.io/ejerestadistica/regrematri.r"><code>regrematri.r</code></a></dt><dd>Ajuste de un modelo de regresión lineal simple, empleando un estimador de mínimos cuadrados pero mediante <b>álgebra matricial</b>.</dd>
 </dl>
 </div>
 </div>
-<div id="outline-container-orgbbf57a7" class="outline-3">
-<h3 id="orgbbf57a7"><span class="section-number-3">2.5.</span> → Cap. 8: Residuales</h3>
+<div id="outline-container-orgd6e82cd" class="outline-3">
+<h3 id="orgd6e82cd"><span class="section-number-3">2.5.</span> → Cap. 8: Residuales</h3>
 </div>
 
 
-<div id="outline-container-orgd8917e5" class="outline-3">
-<h3 id="orgd8917e5"><span class="section-number-3">2.6.</span> → Cap. 9: Supuestos de un modelo de regresión</h3>
+<div id="outline-container-org23af535" class="outline-3">
+<h3 id="org23af535"><span class="section-number-3">2.6.</span> → Cap. 9: Supuestos de un modelo de regresión</h3>
 </div>
 </div>
-<div id="outline-container-orgaec8626" class="outline-2">
-<h2 id="orgaec8626"><span class="section-number-2">3.</span> Sugerencias/errores</h2>
+<div id="outline-container-orgafd8804" class="outline-2">
+<h2 id="orgafd8804"><span class="section-number-2">3.</span> Sugerencias/errores</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a <a href="mailto:christian.salas@uchile.cl">este email</a>.
@@ -192,7 +340,7 @@ En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a <
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Christian Salas-Eljatib</p>
-<p class="date">Created: 2026-05-13 Wed 17:30</p>
+<p class="date">Created: 2026-05-15 Fri 16:15</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
