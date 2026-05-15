@@ -15,9 +15,9 @@
 ##+ I. Datos para ejemplo
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 library(datana)
-data(bearsdepu2)
-df <- bearsdepu2
-#?bearsdepu2 #ejecutelo en la consola
+data(bearscomp2)
+df <- bearscomp2
+#?bearscomp2 #ejecutelo en la consola
 head(df)
 dim(df)
 str(df)

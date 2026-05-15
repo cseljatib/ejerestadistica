@@ -1,6 +1,6 @@
 
 library(datana)
-df <- datana::bearsdepu2
+df <- datana::bearscomp2
 head(df)
 
 tapply(df$peso,df$sexo,length)
@@ -28,7 +28,7 @@ summary(m1.b)
 anova(m1.b)
 
 ###
-bw.colint <- bearsdepu2[,c('peso','edad','cabezaL','cabezaA','largo','pechoP')]
+bw.colint <- bearscomp2[,c('peso','edad','cabezaL','cabezaA','largo','pechoP')]
 head(bw.colint)
 
 pairs(bw.colint)

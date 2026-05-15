@@ -61,7 +61,7 @@ head(df)
 table(df$yaju.class)
 
 ##-(ii) Aplicando el test estadistico de Levene
-#library(car)
+library(car)
 leveneTest(df$res, df$yaju.class)
 
 ##-(iii) Aplicando el test estadistico de Bartlett
