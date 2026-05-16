@@ -32,6 +32,8 @@ descstat(data=subset(df,activ=="Ocupados"),y=c("edad","ytot","ytotcor"))
 descstat(data=subset(df,edad >=18 & ytotcor>0),y=c("edad","ytot","ytotcor"))
 descstat(data=subset(df,edad >=18 & ytotcor>0&activ=="Ocupados"),y=c("edad","ytot","ytotcor"))
 
+dfx<-subset(df,edad >=18 & ytotcor>0&activ=="Ocupados")
+boxplot(dfx$ytotcor)
 df.ori<-df
 
 ##- filtro, emplear solo los datos para adultos con ingresos
@@ -139,10 +141,8 @@ b0.hat2+b1.hat2*30
 ##para una edad de 50 anhos
 b0.hat2+b1.hat2*50
 
-
 ##* Que tan bueno es este modelo
 predstat(obs=df$vary,pre=fitted(m2),want.percent = T)
-
 
 ##+ Cuadro "analisis de varianza del modelo ajustado"
 anova(m2)
@@ -155,11 +155,11 @@ anova(m2)
 ##* Analicemos graficamente
 
 require(lattice)
-histogram(~ypc|sexo, data=df)
+histogram(~vary|sexo, data=df)
 
-xyplot(ypc~edad| sexo, data=df)
+xyplot(vary~edad| sexo, data=df)
 
-xyplot(ypc~edad,groups = sexo, data=df,auto.key = TRUE)
+xyplot(vary~edad,groups = sexo, data=df,auto.key = TRUE)
 
 
 ##otro grafico
@@ -275,7 +275,6 @@ b0.hat3c + b1.hat3c*50 + b2.hat3c*1 + b3.hat3c*50*1
 ##  ..... para hombre?
 b0.hat3c + b1.hat3c*50 + b2.hat3c*0 + b3.hat3c*50*0
 
-
 ##* Que tan bueno es este modelo
 predstat(obs=df$vary,pre=fitted(m3c),want.percent = T)
 
@@ -286,7 +285,7 @@ anova(m2,m3c)
 coef <- coefficients(m3c)
 plot(vary~edad, data=df, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años)")
 abline(coef["(Intercept)"] + coef["sexoMujer"],
-coef["edad"]+coef["edad:sexoMujer"], col = "red",lwd=2)
+coef["edad"]+coef["edad:sexoMujer"], col = "red",lwd=4)
 abline(coef["(Intercept)"],
 coef["edad"], col = "blue",lwd=2)
 legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
