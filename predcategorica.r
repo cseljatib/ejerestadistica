@@ -1,3 +1,19 @@
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script academico                                              ║
+##+║ Sobre: Modelo de regresion con variable predictora categorica ║
+## ║ o factor.                                                     ║
+##-║ Detalles:  La variable respuesta es continua.                 ║
+##-║ Mas detalles:  grafica comportamiento de cada modelo.         ║
+## ║                                                               ║
+## ║                                                               ║
+##*║ Ejemplo: Datos de variables de crecimiento de                 ║
+## ║ osos (bearscomp2).                                            ║
+##-║---------------------------------------------------------------║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
 
 library(datana)
 df <- datana::bearscomp2

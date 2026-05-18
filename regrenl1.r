@@ -1,12 +1,20 @@
-##! Script: "regrenl1.r"                                         /
-##- Sobre:  Ajuste de modelo de regresion no lineal             /
-##+ Detalles:  Emplea datos de peso de hojas                   /
-## -----------------------------------------------------------/ 
-##                                                           /
-## Profesor: Christian Salas Eljatib                        /
-## E-mail: christian.salas AT uchile DOT cl                /
-## Web: https://eljatib.com                               /
-##=======================================================/
+##!╔═══════════════════════════════════════════════════════════════╗
+##*║ Script academico                                              ║
+##+║ Sobre:  Ajuste modelo de regresion no-lineal (RNL)            ║
+##-║ Detalles:  Emplea estimador de minimos cuadrados.             ║
+##-║ Mas detalles: Entre otras cosas, en este ejercicio se:        ║
+## ║+ revisan como se logra el ajuste a partir de valores iniciales║
+## ║ que deben ser datos a los parametros a ser estimados.         ║
+## ║predictora                                                     ║
+## ║                                                               ║
+##*║ Ejemplo: Datos de area y peso de hojas (leafw2).              ║
+##-║---------------------------------------------------------------║
+## ║                                                               ║
+##>║ Profesor: Christian Salas Eljatib                             ║
+##+║ E-mail: christian.salas AT uchile DOT cl                      ║
+##*║ Web: https://eljatib.com                                      ║
+##!╚═══════════════════════════════════════════════════════════════╝
+
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+## I. Datos
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -42,21 +50,34 @@ plot(area~inv.rpeso,data=df,
 
 par(op)
 
-#ajuste modelo 
-# area =b0+b1(1/sqrt(peso))
-hoja.rls <- lm(area~inv.rpeso, data=df)
-summary(hoja.rls)
+##! Ajuste modelo regresion lineal
+## con variable predictora transformada
+##? area_i=b0+b1(1/sqrt(peso_i))
+m1 <- lm(area~inv.rpeso, data=df)
+summary(m1)
 
-df$fit.slr <- fitted(hoja.rls)
-df$sr.rls <- rstudent(hoja.rls)    
+df$fit.slr <- fitted(m1)
+df$sr.rls <- rstandard(m1)    
 
-#graficos de diagnostico
+##! Graficos para evaluar el ajuste
 op <- par(las=1,mfrow=c(2,2))
+
+##- Valor esperado del modelo segun los datos de las variables
+##-  respuesta versus predictora
 plot(area~inv.rpeso,data=df,
      ylab="Area foliar (cm^2)",
      xlab="inv.sqrt(Peso foliar (inv.sqrt[g]))")
 
-abline(reg=hoja.rls,col="red",lwd=2)   
+abline(reg=m1,col="red",lwd=2)   
+
+range(df$peso)
+
+##- Valor esperado del modelo segun los datos de las variables
+##-  respuesta versus predictora
+plot(area~inv.rpeso,data=df,
+     ylab="Area foliar (cm^2)",
+     xlab="inv.sqrt(Peso foliar (inv.sqrt[g]))")
+
 
 plot(sr.rls~inv.rpeso, data=df,
      col=ifelse(abs(sr.rls)<2, "green", "red"), 
@@ -79,16 +100,23 @@ shapiro.test(df$sr.rls)
 par(op)
 
 ##========================
-##ajuste modelo no-lineal
+##! Ajuste modelo no-lineal
 #=========================
 hoja.rnl <- nls(area~b0 + b1*peso^b2,  data = df,
                 start = list(b0=50, b1=-8, b2=-0.5))
 summary(hoja.rnl)
 
-summ.hoja.rnl <- summary(hoja.rnl)
+sigma.e.rnl <- summary(hoja.rnl)$sigma
+sigma.e.rnl
+
 df$fit.rnl <- fitted(hoja.rnl)
-df$sr.rnl <- summ.hoja.rnl$residuals/summ.hoja.rnl$sigma    # store studentized residuals
-p.fake <- seq(0.04,.20,length=100)  
+##* residuos "crudos"
+df$resi.rnl <- residuals(hoja.rnl)
+head(df)
+##* residuos estandarizados
+df$sr.rnl <- df$resi.rnl/sigma.e.rnl
+head(df)
+x.ast <- seq(0.04,.20,length=100)  
 
 
 op <- par(mfrow=c(2,2), las=1,bty="l")
@@ -97,7 +125,7 @@ plot(area~peso,data=df,
      ylab="Area foliar (cm^2)",
      xlab="Peso foliar (g)")
 
-lines(p.fake,predict(hoja.rnl, data.frame(peso=p.fake)), 
+lines(x.ast,predict(hoja.rnl, data.frame(peso=x.ast)), 
       lty=1, lwd = 2, col="red")
 
 plot(sr.rnl~peso, data=df,
@@ -148,14 +176,14 @@ df$fit.rlm <- fitted(hoja.rlm)
 df$sr.rlm <- rstudent(hoja.rlm)    
 
 pred.area.rlm <-predict(hoja.rlm,
-                        data.frame(peso=p.fake))
+                        data.frame(peso=x.ast))
 
 op <- par(mfrow=c(2,2),las=1 )
 
 plot(area~peso,data=df,
      ylab=expression("Area foliar " (cm^2)),
      xlab="Peso foliar (gr)")
-lines(p.fake,pred.area.rlm, 
+lines(x.ast,pred.area.rlm, 
       lty=1, lwd = 2, col="red")
 
 plot(sr.rlm~peso, data=df,
