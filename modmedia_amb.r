@@ -1,7 +1,7 @@
 ##! Script: "modmedia2.r"                                         /
 ##- Sobre:  Ajuste modelo del simple promedio (SMM)              /
 ##+ Detalles: Emplea estimador de minimos cuadrados             /
-##+ Ejemplo: Ajuste con datos de largo de precipitaciones.     /
+##+ Ejemplo: Ajuste con datos de precipitaciones.             /
 ##-----------------------------------------------------------/ 
 ##                                                          /
 ## Profesor: Christian Salas Eljatib                       /
