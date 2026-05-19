@@ -1,13 +1,13 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
-##+║ Sobre: Modelos con variables predictoras categorica y         ║
-## ║ continua.                                                     ║
-##-║ Detalles:  Emplea estimador de minimos cuadrados              ║
-##-║ Mas detalles: Compara modelos distintas aproximaciones.       ║
+##+║ Sobre: Modelo de regresion con variable predictora categorica ║
+## ║ o factor.                                                     ║
+##-║ Detalles:  La variable respuesta es continua.                 ║
+##-║ Mas detalles:  Ajuste del modelo con variable dummy como      ║
+## ║  predictor.                                                   ║
 ## ║                                                               ║
-## ║                                                               ║
-##*║ Ejemplo: Variable respuesta de ingreso versus edad y sexo     ║
-## ║ segun la encuesta CASEN (casen).                              ║
+##*║ Ejemplo: Datos de ingreso total corregido segun               ║
+##*║ encuesta (casen).                                             ║
 ##-║---------------------------------------------------------------║
 ## ║                                                               ║
 ##>║ Profesor: Christian Salas Eljatib                             ║
@@ -168,7 +168,7 @@ col.list[df$sexo=="Hombre"] <- "red"
 col.list[df$sexo=="Mujer"] <- "blue"
 plot(vary~edad, data=df, col=col.list, ylab="Ingreso ($/mes)",xlab="Age")
 abline(m2, col = "green", lwd=4)
-legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
+legend('bottomright',unique(df$sexo),col=unique(col.list),pch=1)
 
 ##+ Edad y el factor "Sexo" como predictores
 m3 <- lm(vary ~ edad+sexo, data=df)
@@ -211,10 +211,10 @@ anova(m2,m3)
 coef <- coefficients(m3)
 plot(df$edad, df$vary, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años)")
 abline(coef["(Intercept)"] + coef["sexoMujer"],
-coef["edad"], col = "red", lwd=4)
+coef["edad"], col = "red")
 abline(coef["(Intercept)"],
-coef["edad"], col = "blue", lwd=4)
-legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
+coef["edad"], col = "blue")
+legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
 
 
 
@@ -287,8 +287,8 @@ plot(vary~edad, data=df, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años
 abline(coef["(Intercept)"] + coef["sexoMujer"],
 coef["edad"]+coef["edad:sexoMujer"], col = "red",lwd=4)
 abline(coef["(Intercept)"],
-coef["edad"], col = "blue",lwd=4)
-legend('topcenter',unique(df$sexo),col=unique(col.list),pch=1)
+coef["edad"], col = "blue",lwd=2)
+legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
 
 #-╔═════════════════╗
 #-║ Fin del script! ║

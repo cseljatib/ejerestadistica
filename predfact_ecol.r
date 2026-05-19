@@ -3,8 +3,8 @@
 ##+║ Sobre: Modelo de regresion con variable predictora categorica ║
 ## ║ o factor.                                                     ║
 ##-║ Detalles:  La variable respuesta es continua.                 ║
-##-║ Mas detalles:  grafica comportamiento de cada modelo.         ║
-## ║                                                               ║
+##-║ Mas detalles:  Ajuste del modelo con variable dummy como      ║
+## ║  predictor.                                                   ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de variables de crecimiento de                 ║
 ## ║ osos (bearscomp2).                                            ║
@@ -20,25 +20,23 @@ df <- datana::bearscomp2
 head(df)
 
 tapply(df$peso,df$sexo,length)
-df[df$sexo==1,"sexo.name"]="Macho"
-df[df$sexo==2,"sexo.name"]="Hembra"
 
 is.factor(df$sexo.name)
-df$sexo.name<-as.factor(df$sexo.name)
-means.g <- tapply(df$peso,df$sexo.name,mean)
+df$sexo.nombre<-as.factor(df$sexo.nombre)
+means.g <- tapply(df$peso,df$sexo.nombre,mean)
 means.g
 
-sds.g <- tapply(df$peso,df$sexo.name,sd)
+sds.g <- tapply(df$peso,df$sexo.nombre,sd)
 sds.g
 
-ns.g <- tapply(df$peso,df$sexo.name,length)
+ns.g <- tapply(df$peso,df$sexo.nombre,length)
 ns.g
 
-boxplot(df$peso ~df$sexo.name, ylab="Peso (Kg)",
+boxplot(df$peso ~df$sexo.nombre, ylab="Peso (Kg)",
 xlab="Sexo")
 
 ###Ajuste de modelo con variable categorica
-m1.b <- lm(peso ~ sexo.name, data=df)
+m1.b <- lm(peso ~ sexo.nombre, data=df)
 summary(m1.b)
 
 anova(m1.b)
@@ -67,33 +65,33 @@ anova(m4,m3)#primero el modelo con mayor RSS
 
 ###comparemos el mejor modelo anterior, con el
 ## que usa solo un factor
-m5 <- lm(peso~sexo.name, data=df) #un slr
+m5 <- lm(peso~sexo.nombre, data=df) #un slr
 
 anova(m5,m4)
 
-m6 <- lm(peso~sexo.name+edad+pechoP, data=df) 
+m6 <- lm(peso~sexo.nombre+edad+pechoP, data=df) 
 summary(m6)
 
 anova(m6,m5)
 
 ###sobre como altera el valor esperado un factor como predictor
-col.list <- rep(0, length(df$sexo.name))
-col.list[df$sexo.name=="Macho"] <- "blue"
-col.list[df$sexo.name=="Hembra"] <- "red"
+col.list <- rep(0, length(df$sexo.nombre))
+col.list[df$sexo.nombre=="Macho"] <- "blue"
+col.list[df$sexo.nombre=="Hembra"] <- "red"
 plot(df$edad, df$peso, col=col.list, ylab="Peso (Kg)", xlab="Edad (yr)" )
 abline(m1, col = "green", lwd=2)
 
-legend("bottomright",levels(df$sexo.name),col=unique(col.list),pch=1)
+legend("bottomright",levels(df$sexo.nombre),col=unique(col.list),pch=1)
 
 ###altera interceptos
 m1.a <- lm(peso~edad+sexo, data=df) 
 summary(m1.a)
 
 ###altera pendientes
-m1.b <- lm(peso~sexo.name:edad, data=df) 
+m1.b <- lm(peso~sexo.nombre:edad, data=df) 
 summary(m1.b)
 
 ###altera pendiente e intercepto
-m1.c <- lm(peso~sexo.name*edad, data=df) 
+m1.c <- lm(peso~sexo.nombre*edad, data=df) 
 summary(m1.c)
 

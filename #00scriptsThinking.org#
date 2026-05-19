@@ -1,0 +1,72 @@
+#+title: Do not forget buddy!
+#+language: es
+#+author: Christian Salas-Eljatib
+#+subtitle: Related to my stat book
+#+email: christian.salas@uchile.cl
+#+options: toc:nil
+#+property: header-args:R :session :tangle yes :comments both :results output :exports both
+
+Este archivo es para mantener una bitacora de detalles que debo implementar, así como también para recordar el porque de los nombres de los scripts y/o de su concepcion y espiritu (i.e., que busco con ellos).
+
+Todo esto es material complementario al libro *Estadística Aplicada e Inferencial* del Profesor [[https://eljatib.com][Christian Salas-Eljatib]] del [[https://biometriaforestal.uchile.cl][Laboratorio de Biometría y Modelación Forestal]] y del [[https://www.postgradofen.uchile.cl/mag%C3%ADster-en-pol%C3%ADticas-p%C3%BAblicas-escuela-de-postgrado-facultad-de-econom%C3%ADa-y-negocios-universidad-de-chile][Magíster en Políticas Públicas]] de la [[https://uchile.cl][Universidad de Chile]].
+
+
+* Scripts para datos de diferentes disciplinas
+La idea es que cada script creado, que tiene un espiritu especifico, ya que busca explicar algo en particular, se pueda ejemplificar (cuando sea necesario o posible) con diferentes datos, en donde cada uno de ellos deben ser representativos de una disciplina en particular.
+
+Las principales disciplinas serian: 
+
+
+** Ecología
+scripts que terminan en *_eje1.r* o  *_ecol.r*?
+
+** Ciencias Forestales
+Actualmente a estos generalmente son los nombres de archivos de scripts que terminan en *_eje1.r* o mejor *_for.r*?
+
+** Economía y/o politicas públicas
+Actualmente a estos generalmente son los nombres de archivos de scripts que terminan en *..ejec.r* o *_econ.r*?
+
+** Medio ambiente (clima, contaminación)
+scripts que terminan en  *_amb.r*?
+
+** Bioestadistica (medicina, odontologia)
+scripts que terminan en  *_salud.r*?
+
+* Sobre scripts con variable predictora categórica 
++ seria bueno dividir el actual script o scripts en pequenhas partes primero, es decir, mostrar mediante graficos de distribucion y/o densidad, diferencias entre los niveles de un factor,y posteriormente explicar como se realiza el ajuste, y se obtienen predicciones.
++ para la comparacion grafica de distribuciones podria usar mi ejemplo que tengo de regresion logistica o algo como lo siguiente
+(1) solo predictora, y prediccion
+(2) solo predictora, y una variable continua.   
+
+#+begin_src R
+library(datana)
+df<-idahohd2
+plot(density(df$atot))
+#par(new=TRUE)
+#plot(density(datagrupob$vary))
+#+end_src
+
+#+RESULTS:
+
+* Transformando variables
+
+** Como la transformacion cambia o no una distribucion 
+es decir aca solo centrado en una variable
+
+** El efecto del escalado de variables 
+- la llamada normalizacion
+
+- al dividir por el máximo
+  
+** transformando en el contexto de regresion
+- en la variable predictora 
+
+- en la variable respuesta
+
+ #+begin_quote
+Detenerse en la parte del script donde se muestra el resumen del modelo ajustado y analizar los resultados
+#+end_quote
+
+* Sugerencias/errores
+En caso de encontrar errores, tenga sugerencias, o dudas, por favor escribir a [[mailto:christian.salas@uchile.cl][este email]].
+
