@@ -95,8 +95,9 @@ descstat(data=df,y=c("vary"),factvar = "sexo")
 
 
 ##- ===================================
-##! II. Ajuste con un Factor como variable predictora
+##! II. Ajuste de modelo 1 -- Factor como predictor
 ##- ===================================
+##+ Primer modelo, solo el factor como predictor
 #Identica sintaxis que para ajuste de modelos de regresion lineal
 # para lo cual empleamos la funcion lm().
 m1 <- lm(vary ~ sexo, data=df)
@@ -122,12 +123,12 @@ anova(m1)
 ##* Que tan bueno es este modelo
 100*summary(m1)$sigma/mean(df$vary)
 
+##+ Calculo de estadisticos de prediccion
 predstat(obs=df$vary,pre=fitted(m1),want.percent = T)
 
 
-
 ##- ===================================
-##! IV. Ajuste de modelo 2 -- Una variable continua Factor como predictor
+##! IV. Ajuste de modelo 2 -- Una variable continua como predictor
 ##- ===================================
 ##+ Primer modelo, solo la edad como predictor
 m2 <- lm(vary ~ edad, data=df)
@@ -151,7 +152,8 @@ anova(m2)
 
 
 ##- ===================================
-##! IV. Ajuste de modelo 3 -- Una variable continua y factor como predictores
+##! IV. Ajuste de modelo 3 -- dos variables predictoras:
+## una continua y otro factor
 ##- ===================================
 ##* Analicemos graficamente
 
@@ -173,6 +175,7 @@ legend('bottomright',unique(df$sexo),col=unique(col.list),pch=1)
 
 ##+ Edad y el factor "Sexo" como predictores
 m3 <- lm(vary ~ edad+sexo, data=df)
+## la sintaxis es la de un modelo de reg. lineal multiple
 summary(m3)
 
 

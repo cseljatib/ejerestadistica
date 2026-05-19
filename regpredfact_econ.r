@@ -122,6 +122,7 @@ anova(m1)
 ##* Que tan bueno es este modelo
 100*summary(m1)$sigma/mean(df$vary)
 
+##+ Calculo de estadisticos de prediccion
 predstat(obs=df$vary,pre=fitted(m1),want.percent = T)
 
 ##? ===============

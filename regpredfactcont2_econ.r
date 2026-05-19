@@ -1,10 +1,11 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
-##+║ Sobre: Modelo de regresion con variable predictora categorica ║
-## ║ o factor.                                                     ║
+##+║ Sobre: Modelo de regresion con dos variable predictoras: una  ║
+## ║  categorica o factor, y la otra continua.                     ║
 ##-║ Detalles:  La variable respuesta es continua.                 ║
-##-║ Mas detalles:  Ajuste del modelo con variable dummy como      ║
-## ║  predictor.                                                   ║
+##-║ Mas detalles:  Ajuste de tres modelos con variable dummy como ║
+## ║  predictor y sus diferentes variantes para ser incorporadas   ║
+## ║  en el modelo estadistico.                                    ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de ingreso total corregido segun               ║
 ##*║ encuesta (casen).                                             ║
@@ -95,7 +96,7 @@ descstat(data=df,y=c("vary"),factvar = "sexo")
 
 
 ##- ===================================
-##! III. Ajuste de modelo 1 -- Factor como predictor
+##! II. Ajuste de modelo 1 -- Factor como predictor
 ##- ===================================
 ##+ Primer modelo, solo el factor como predictor
 #Identica sintaxis que para ajuste de modelos de regresion lineal
@@ -123,10 +124,12 @@ anova(m1)
 ##* Que tan bueno es este modelo
 100*summary(m1)$sigma/mean(df$vary)
 
+##+ Calculo de estadisticos de prediccion
 predstat(obs=df$vary,pre=fitted(m1),want.percent = T)
 
+
 ##- ===================================
-##! IV. Ajuste de modelo 2 -- Una variable continua Factor como predictor
+##! IV. Ajuste de modelo 2 -- Una variable continua como predictor
 ##- ===================================
 ##+ Primer modelo, solo la edad como predictor
 m2 <- lm(vary ~ edad, data=df)
@@ -150,7 +153,8 @@ anova(m2)
 
 
 ##- ===================================
-##! IV. Ajuste de modelo 3 -- Una variable continua y factor como predictores
+##! IV. Ajuste de modelo 3 -- dos variables predictoras:
+## una continua y otro factor
 ##- ===================================
 ##* Analicemos graficamente
 
@@ -172,6 +176,7 @@ legend('bottomright',unique(df$sexo),col=unique(col.list),pch=1)
 
 ##+ Edad y el factor "Sexo" como predictores
 m3 <- lm(vary ~ edad+sexo, data=df)
+## la sintaxis es la de un modelo de reg. lineal multiple
 summary(m3)
 
 
@@ -215,13 +220,23 @@ coef["edad"], col = "red")
 abline(coef["(Intercept)"],
 coef["edad"], col = "blue")
 legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
-
+## note que aca solo varian los interceptos entre los niveles del
+##  factor.
 
 
 ##- ===================================
-##! V. Ajuste de modelo 3b -- otra variante (varpred continua y factor)
+##! V. Otras variantes empleando las mismas variables predictoras
+## que el modelo anterior
 ##- ===================================
-##+ Otra variante: Edad y el factor "Sexo" como predictores
+
+##! El modelo anteriormente ajustado, lo que cambia entre los niveles
+## del factor es el intercepto.
+
+##- ===================================
+##! b) Ajuste de modelo con pendientes diferentes entre niveles
+## del factor
+##- ===================================
+##+ recuerde, las variables predictoras son: Edad y el factor "Sexo"
 m3b <- lm(vary ~ edad:sexo, data=df)
 summary(m3b)
 
@@ -252,7 +267,12 @@ predstat(obs=df$vary,pre=fitted(m3b),want.percent = T)
 anova(m2,m3b)
 
 
-##+ Ultima variante: Edad y el factor "Sexo" como predictores
+
+##- ===================================
+##! b) Ajuste de modelo con interceptos y pendientes diferentes entre
+## niveles del factor
+##- ===================================
+##+ recuerde, las variables predictoras son: Edad y el factor "Sexo"
 m3c <- lm(vary ~ edad*sexo, data=df)
 summary(m3c)
 
@@ -282,6 +302,11 @@ summary(m3c)
 ##! test de F-parcial
 anova(m2,m3c)
 
+
+##+======================================================
+##! Grafico de comportamiento para modelo con interceptos y
+## pendientes diferentes entre niveles del factor.
+##+======================================================
 coef <- coefficients(m3c)
 plot(vary~edad, data=df, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años)")
 abline(coef["(Intercept)"] + coef["sexoMujer"],
@@ -289,6 +314,12 @@ coef["edad"]+coef["edad:sexoMujer"], col = "red",lwd=4)
 abline(coef["(Intercept)"],
 coef["edad"], col = "blue",lwd=2)
 legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
+
+
+##? ===================
+## 1. en que se parecen los modelos m3 y m3b?
+## 2. en que se diferencian los modelos m3 y m3b, con respecto al
+## modelo m3c
 
 #-╔═════════════════╗
 #-║ Fin del script! ║
