@@ -1,12 +1,12 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
-##+║ Sobre: Ajuste del modelo de regresion lineal simple (RLS)     ║
+##+║ Sobre: Ajuste del modelo de regresion lineal multiple (RLM)   ║
 ##-║ Detalles:  Emplea estimador de minimos cuadrados              ║
 ##-║ Mas detalles:  Emplea estimador de minimos cuadrados, pero    ║
 ## ║  mediante algebra matricial.                                  ║
 ## ║                                                               ║
-## ║                                                               ║
-##*║ Ejemplo: Datos de tamanho de peces (fishgrowth2)              ║
+##*║ Ejemplo: Datos de variables de crecimiento de                 ║
+## ║ osos (bearscomp2).                                            ║
 ## ║                                                               ║
 ##-║---------------------------------------------------------------║
 ## ║                                                               ║
@@ -16,31 +16,30 @@
 ##!╚═══════════════════════════════════════════════════════════════╝
 
 
-##! ============================================
-##+ I. Datos para ejemplo
-##! ============================================
+##- ============================================
+##! I. Datos para ejemplo
+##- ============================================
 library(datana)
-data(fishgrowth2)
-df <- fishgrowth2
-#?fishgrowth2 #ejecutelo en la consola
+data(bearscomp2)
+df <- bearscomp2
+#?bearsdepu2 #ejecutelo en la consola
 head(df)
 dim(df)
 str(df)
 
-##! ============================================
-##+ II. Representacion matricial
-##! ============================================
-
-
-yvec <- df$largo #vector de la variable respuesta
+##- ============================================
+##! II. Representacion matricial
+##- ============================================
+yvec <- df$peso #vector de la variable respuesta
 yvec[1:7] #veamos las primeras siete observaciones
 
 n<-length(yvec)
 n
 
-##- y la matriz  X
-xvec <-  df$edad
-Xmat <- cbind(rep(1, n), xvec)
+##- y la matriz  X (note que debe considerar dos variables predictoras)
+xvec1 <-  df$edad
+xvec2 <-  df$largo
+Xmat <- cbind(rep(1, n), xvec1,xvec2)
 Xmat[1:10,] #veamos las primeras diez observaciones
 
 ##> Ahora tenemos todo lo necesario para calcular el vector
@@ -57,6 +56,7 @@ q<-nrow(beta.hat.vec) #numero de coeficientes
 
 b0.hat<-beta.hat.vec[1];b0.hat
 b1.hat<-beta.hat.vec[2];b1.hat
+b2.hat<-beta.hat.vec[3];b2.hat
 
 ##+ Ahora calcular la varianza de los residuales
 ##- (1) calcular la matriz "hat"
@@ -98,7 +98,7 @@ se.betas.ols
 ## Tarea/preguntas
 ##* 1. Compare resultados anteriores con el que se obtiene al aplicar
 ##* la funcion lm() de R
-mod.lm<- lm(largo~edad,data=df)
+mod.lm<- lm(peso~edad+largo,data=df)
 summary(mod.lm)
 coef(mod.lm)
 (summary(mod.lm))$sigma

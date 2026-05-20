@@ -1,10 +1,10 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
-##+║ Sobre: Ajuste y comparacion de tres modelos de regresion      ║
+##+║ Sobre: Ajuste y comparacion de cuatro modelos de regresion    ║
 ##-║ lineal multiple.                                              ║
 ##-║ Detalles:  Emplea estimador de minimos cuadrados              ║
-##-║ Mas detalles:  grafica comportamiento de cada modelo.         ║
-## ║                                                               ║
+##-║ Mas detalles:  Realiza evaluacion grafica, pero tambien test  ║
+##-║ de hipotesis entre cuatro modelos considerados.               ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de variables de crecimiento de                 ║
 ## ║ osos (bearscomp2).                                            ║
@@ -21,7 +21,7 @@
 library(datana)
 data(bearscomp2)
 df <- bearscomp2
-#?bearsdepu2 #ejecutelo en la consola
+#?bearscomp2 #ejecutelo en la consola
 head(df)
 dim(df)
 str(df)
@@ -51,23 +51,32 @@ summary((df$edad/12))
 ##!Grafico de dispersion entre dos variables
 ##- ===================================
 plot(peso ~ edad, data=df)
-plot(peso ~ largo, data=df)
-plot(peso ~ pechoP, data=df)
-plot(peso ~ cabezaL, data=df)
 
 ##!Dispersion acompanhado por grafico de distribucion
 ##+ marginal, funcion xyhist() del paquete datana
 xyhist(x=df$edad,y=df$peso,xlab="Edad",ylab="Peso")
+## ahora para otras tres potenciales variables predictoras
+plot(peso ~ largo, data=df)
+plot(peso ~ pechoP, data=df)
+plot(peso ~ cabezaL, data=df)
+
+
+##* exploremos el uso de una funcion grafica de utilidad
+##revise la syntaxis en detalle mediante ?xymultiplot
+df2 <- df[,c('edad','largo','pechoP','cabezaL','cabezaA','peso')]
+descstat(df2)
+xymultiplot(df2)
+
 
 ##- ===================================
 ##!Grafico de dispersion entre tres variables
 ##+ es decir, en tres dimensiones (3D)
 ##- ===================================
 ##* Note que debe instalar el paquete 'scatterplot3d' 
-require(scatterplot3d)
+library(scatterplot3d)
 ##- Por ejemplo, peso=f(edad, largo)
 op<-par(las=1) 
-s3d <-scatterplot3d(bearscomp2$edad,bearscomp2$largo,bearscomp2$peso,
+s3d <-scatterplot3d(df$edad,df$largo,df$peso,
                     pch=16, highlight.3d=TRUE,
       type="h",angle=30,xlab="Edad",ylab="Largo (m)",zlab="Peso (kg)")
 
@@ -159,8 +168,51 @@ anova(m3.osos)
 
 ##? hay elementos comunes en ambas? cuales?
 
-#-╔═════════════════╗
-#-║ Fin del script! ║
-#-║ Atte.           ║
-#-║ El profesor     ║
-#-╚═════════════════╝
+
+##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##+ VI. Test de F-parcial entre dos modelos 
+##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+##- a) modelo 1 vs modelo 2
+anova(m1.osos,m2.osos)
+
+##- a) modelo 2 vs modelo 2
+anova(m2.osos,m3.osos)
+
+
+##!##################################################
+##+ Ajustemos otro modelo
+##!#################################################
+m4.osos<- lm(peso~edad+pechoP, data=df) 
+summary(m4.osos)
+
+
+##- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##+ Sigma estimado de los residuales de cada modelo 
+sigma.e1<-summary(m1.osos)$sigma
+sigma.e2<-summary(m2.osos)$sigma
+sigma.e3<-summary(m3.osos)$sigma
+sigma.e4<-summary(m4.osos)$sigma
+
+sigma.e<-c(sigma.e1,sigma.e2,sigma.e3,sigma.e4)
+
+##+ Expresando sigma de los residuales, en %
+mean.y<- mean(df$peso); mean.y
+sigma.e.p<-100*(sigma.e/mean.y)
+
+##- Creando una tabla comparativa
+modelo<-1:4
+tabla.comparativa<-data.frame(modelo,sigma.e,sigma.e.p)
+tabla.comparativa
+
+##- Test de F-parcial entre modelo 4 vs modelo 3
+anova(m4.osos,m3.osos)
+
+##? Cual modelo selecciona Ud? Fundamente
+
+#*╔═════════════════╗
+#*║ Fin del script! ║
+#*║ Atte.           ║
+#*║ El profesor     ║
+#*╚═════════════════╝
+

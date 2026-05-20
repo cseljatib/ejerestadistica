@@ -6,8 +6,8 @@
 ## ║  mediante algebra matricial.                                  ║
 ## ║                                                               ║
 ## ║                                                               ║
-##*║ Ejemplo: Datos de tamanho de peces (fishgrowth2)              ║
-## ║                                                               ║
+##*║ Ejemplo: Datos de gasto social a nivel pais (socioecon).      ║
+## ║Relacion entre pobreza y gasto social                          ║
 ##-║---------------------------------------------------------------║
 ## ║                                                               ║
 ##>║ Profesor: Christian Salas Eljatib                             ║
@@ -16,30 +16,32 @@
 ##!╚═══════════════════════════════════════════════════════════════╝
 
 
-##! ============================================
-##+ I. Datos para ejemplo
-##! ============================================
+##+ ============================================
+##! I. Datos para ejemplo
+##+ ============================================
 library(datana)
-data(fishgrowth2)
-df <- fishgrowth2
-#?fishgrowth2 #ejecutelo en la consola
+data(socioecon)
+##?socioecon #ejecutelo en la consola
+##? revise en la metadata cual es la definicion para "poverty"
+##? revise en la metadata cual es la definicion para "socspend"
+df <- socioecon
+
 head(df)
 dim(df)
 str(df)
 
-##! ============================================
-##+ II. Representacion matricial
-##! ============================================
 
-
-yvec <- df$largo #vector de la variable respuesta
+##+ ============================================
+##! II. Representacion matricial
+##+ ============================================
+yvec <- df$poverty #vector de la variable respuesta
 yvec[1:7] #veamos las primeras siete observaciones
 
 n<-length(yvec)
 n
 
 ##- y la matriz  X
-xvec <-  df$edad
+xvec <-  df$socspend
 Xmat <- cbind(rep(1, n), xvec)
 Xmat[1:10,] #veamos las primeras diez observaciones
 
@@ -98,7 +100,7 @@ se.betas.ols
 ## Tarea/preguntas
 ##* 1. Compare resultados anteriores con el que se obtiene al aplicar
 ##* la funcion lm() de R
-mod.lm<- lm(largo~edad,data=df)
+mod.lm<- lm(poverty~socspend,data=df)
 summary(mod.lm)
 coef(mod.lm)
 (summary(mod.lm))$sigma
