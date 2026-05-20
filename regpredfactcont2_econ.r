@@ -1,11 +1,14 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
 ##+║ Sobre: Modelo de regresion con dos variable predictoras: una  ║
-## ║  categorica o factor, y la otra continua.                     ║
+##+║  categorica o factor, y la otra continua.                     ║
 ##-║ Detalles:  La variable respuesta es continua.                 ║
-##-║ Mas detalles:  Ajuste de tres modelos con variable dummy como ║
-## ║  predictor y sus diferentes variantes para ser incorporadas   ║
-## ║  en el modelo estadistico.                                    ║
+##-║ Mas detalles:  Se ajustan modelos con variables predictoras:  ║
+## ║ * (1) solo un factor; (2) solo una variable continua          ║
+## ║ * (3) un factor y una variable continua                       ║
+## ║ * (4 y 5) dos variantes mas del modelo (3)                    ║
+## ║ * Es fundamental aca demostrar que hay varias formas en que   ║
+## ║ una variable factor pueden ser incorporadas en un modelo.     ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de ingreso total corregido segun               ║
 ##*║ encuesta (casen).                                             ║
@@ -198,7 +201,6 @@ predstat(obs=df$vary,pre=fitted(m3),want.percent = T)
 ##+ Cuadro "analisis de varianza del modelo ajustado"
 anova(m3)
 
-
 ##! test de F-parcial
 anova(m2,m3)
 
@@ -221,13 +223,21 @@ legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
 ##  factor.
 
 
+##Note que en el modelo anteriormente ajustado, lo que cambia entre
+## los niveles del factor es el intercepto.
+
 ##- ===================================
 ##! V. Otras variantes empleando las mismas variables predictoras
 ## que el modelo anterior
 ##- ===================================
 
-##! El modelo anteriormente ajustado, lo que cambia entre los niveles
-## del factor es el intercepto.
+##- ===================================
+##! a) El modelo anterior (m3), es una variante del modelo que
+## emplea un factor y una variable continua, en donde lo que difiere
+## entre los niveles del factor es el intercepto del modelo con el
+## cual se obtiene el valor esperado.
+##- ===================================
+
 
 ##- ===================================
 ##! b) Ajuste de modelo con pendientes diferentes entre niveles
@@ -259,10 +269,12 @@ b0.hat3b+b1.hat3b*50*1+b2.hat3b*50*0
 ##* Que tan bueno es este modelo
 predstat(obs=df$vary,pre=fitted(m3b),want.percent = T)
 
-
-##! test de F-parcial
+##! test de F-parcial (entre modelo 2 y 3b)
 anova(m2,m3b)
 
+
+##! Comparacion de SCE de ambos modelos con mismo numero de parametros
+anova(m3,m3b)
 
 
 ##- ===================================
@@ -296,8 +308,9 @@ b0.hat3c + b1.hat3c*50 + b2.hat3c*0 + b3.hat3c*50*0
 predstat(obs=df$vary,pre=fitted(m3c),want.percent = T)
 
 summary(m3c)
+
 ##! test de F-parcial
-anova(m2,m3c)
+anova(m2,m3b,m3c)
 
 
 ##+======================================================
@@ -313,10 +326,12 @@ coef["edad"], col = "blue",lwd=2)
 legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
 
 
-##? ===================
+##? ================================================================
+## Tarea/preguntas:
 ## 1. en que se parecen los modelos m3 y m3b?
 ## 2. en que se diferencian los modelos m3 y m3b, con respecto al
 ## modelo m3c
+##? ================================================================
 
 #-╔═════════════════╗
 #-║ Fin del script! ║

@@ -1,10 +1,13 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
 ##+║ Sobre: Modelo de regresion con dos variable predictoras: una  ║
-## ║  categorica o factor, y la otra continua.                     ║
+## ║  categorica (o factor) y la otra continua.                    ║
 ##-║ Detalles:  La variable respuesta es continua.                 ║
-##-║ Mas detalles:  Ajuste del modelo con variable dummy como      ║
-## ║  predictor.                                                   ║
+##-║ Mas detalles:  Se ajustan modelos con variables predictoras:  ║
+## ║ * (1) solo un factor; (2) solo una variable continua          ║
+## ║ * (3) un factor y una variable continua                       ║
+## ║ * Es fundamental aca demostrar el concepto de la variable     ║
+## ║ dummy o indicadora.                                           ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos del peso de osos (bearscomp2)                  ║
 ##*║                                                               ║
@@ -15,6 +18,7 @@
 ##*║ Web: https://eljatib.com                                      ║
 ##!╚═══════════════════════════════════════════════════════════════╝
 
+
 ##- ===================================
 ##! I. Datos para ejemplo
 ##- ===================================
@@ -24,7 +28,7 @@ head(df)
 
 tapply(df$peso,df$sexo,length)
 
-is.factor(df$sexo.name)
+is.factor(df$sexo.nombre)
 df$sexo.nombre<-as.factor(df$sexo.nombre)
 means.g <- tapply(df$peso,df$sexo.nombre,mean)
 means.g
@@ -43,7 +47,7 @@ descstat(data=df,y=c("peso"),factvar = "sexo.nombre")
 ##? variable aleatoria de interes: la edad
 df$vary<-df$peso
 
-##! grafico de distribucion
+##* grafico de distribucion
 boxplot(df$vary)
 
 hist(df$vary)
@@ -55,12 +59,12 @@ histogram(~vary,data=df)
 ##* todo junto
 histbxp(df$vary,varlab = "Peso (Kg)")
 
-##! Estadistica descriptiva
+##* Estadistica descriptiva
 descstat(data=df,y=c("vary"))
 descstat(data=df,y=c("vary"),full = TRUE,eng=FALSE)
 
 
-##! analizemos una variable categorica
+##* analizando una variable categorica
 table(df$sexo.nombre)
 ##creando una nueva variable
 
@@ -105,7 +109,7 @@ predstat(obs=df$peso,pre=fitted(m1),want.percent = T)
 
 
 ##- ===================================
-##! IV. Ajuste de modelo 2 -- Una variable continua como predictor
+##! III. Ajuste de modelo 2 -- Una variable continua como predictora
 ##- ===================================
 ##+ Primer modelo, solo la edad como predictor
 plot(vary ~ edad, data=df)
@@ -127,6 +131,8 @@ predstat(obs=df$vary,pre=fitted(m2),want.percent = T)
 ##+ Cuadro "analisis de varianza del modelo ajustado"
 anova(m2)
 
+
+
 ##- ===================================
 ##! IV. Ajuste de modelo 3 -- dos variables predictoras:
 ## una continua y otro factor
@@ -136,12 +142,11 @@ anova(m2)
 require(lattice)
 histogram(~vary|sexo.nombre, data=df)
 
-xyplot(vary~edad| sexo, data=df)
+xyplot(vary~edad| sexo.nombre, data=df)
 
 xyplot(vary~edad,groups = sexo.nombre, data=df,auto.key = TRUE)
 
-
-##+ Edad y el factor "Sexo" como predictores
+##+ Edad y el factor "sexo.nombre" como predictores
 m3 <- lm(vary ~ edad+sexo.nombre, data=df)
 ## la sintaxis es la de un modelo de reg. lineal multiple
 summary(m3)
@@ -165,6 +170,7 @@ b0.hat3+b1.hat3*50+b2.hat3*1
 b0.hat3+b1.hat3*50+b2.hat3*0
 
 
+
 ##* Que tan bueno es este modelo
 predstat(obs=df$vary,pre=fitted(m3),want.percent = T)
 
@@ -179,90 +185,30 @@ anova(m2,m3)
 ##+======================================================
 ##! Grafico de comportamiento para este modelo
 ##+======================================================
+col.list <- rep(0, length(df$sexo.nombre))
+col.list[df$sexo.nombre=="Macho"] <- "red"
+col.list[df$sexo.nombre=="Hembra"] <- "blue"
+
 coef <- coefficients(m3)
-plot(df$edad, df$vary, ylab="Peso (kg)", xlab="Edad (años)")
+plot(df$edad, df$vary, col=col.list, ylab="Peso (kg)", xlab="Edad (meses)")
 abline(coef["(Intercept)"] + coef["sexo.nombreHembra"],
 coef["edad"], col = "red")
 abline(coef["(Intercept)"],
-       coef["edad"], col = "blue")
-legend('topleft',legend = unique(df$sexo.nombre),col=c("blue", "red"),pch=1)
+coef["edad"], col = "blue")
+legend('topright',levels(df$sexo.nombre),col=col.list,pch=1)
+## note que aca solo varian los interceptos entre los niveles del
+##  factor.
 
 
+##? ================================================================
+## Tarea/preguntas:
+## 1. Que le parecen los valores esperados para cada nivel del
+## factor en relacion a la dispersion de los datos observados?.
+##? ================================================================
 
-##- ===================================
-##! V. Ajuste de modelo 3b -- otra variante (varpred continua y factor)
-##- ===================================
-##+ Otra variante: Edad y el factor "Sexo" como predictores
-m3b <- lm(vary ~ edad:sexo.nombre, data=df)
-summary(m3b)
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el ejemplo! ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝
 
-
-##- Valor esperado del modelo ajustado
-b0.hat3b<-coef(m3b)[1]
-b1.hat3b<-coef(m3b)[2]
-b2.hat3b<-coef(m3b)[3]
-
-##? para una edad de 30 anhos
-##  ..... para mujer?
-b0.hat3b+b1.hat3b*30*0+b2.hat3b*30*1
-##  ..... para hombre?
-b0.hat3b+b1.hat3b*30*1+b2.hat3b*30*0
-
-##? para una edad de 50 anhos
-##  ..... para mujer?
-b0.hat3b+b1.hat3b*50*0+b2.hat3b*50*1
-##  ..... para hombre?
-b0.hat3b+b1.hat3b*50*1+b2.hat3b*50*0
-
-
-##* Que tan bueno es este modelo
-predstat(obs=df$vary,pre=fitted(m3b),want.percent = T)
-
-
-##! test de F-parcial
-anova(m2,m3b)
-
-
-##+ Ultima variante: Edad y el factor "Sexo" como predictores
-m3c <- lm(vary ~ edad*sexo.nombre, data=df)
-summary(m3c)
-
-
-##- Valor esperado del modelo ajustado
-b0.hat3c<-coef(m3c)[1]
-b1.hat3c<-coef(m3c)[2]
-b2.hat3c<-coef(m3c)[3]
-b3.hat3c<-coef(m3c)[4]
-
-##? para una edad de 30 anhos
-##  ..... para mujer?
-b0.hat3c + b1.hat3c*30 + b2.hat3c*1 + b3.hat3c*30*1
-##  ..... para hombre?
-b0.hat3c + b1.hat3c*30 + b2.hat3c*0 + b3.hat3c*30*0
-
-##? para una edad de 50 anhos
-##  ..... para mujer?
-b0.hat3c + b1.hat3c*50 + b2.hat3c*1 + b3.hat3c*50*1
-##  ..... para hombre?
-b0.hat3c + b1.hat3c*50 + b2.hat3c*0 + b3.hat3c*50*0
-
-##* Que tan bueno es este modelo
-predstat(obs=df$vary,pre=fitted(m3c),want.percent = T)
-
-summary(m3c)
-##! test de F-parcial
-anova(m2,m3c)
-
-coef <- coefficients(m3c)
-plot(vary~edad, data=df, ylab="Peso (kg)", xlab="Edad (años)")
-abline(coef["(Intercept)"] + coef["sexo.nombreHembra"],
-coef["edad"]+coef["edad:sexo.nombreHembra"], col = "red",lwd=4)
-abline(coef["(Intercept)"],
-coef["edad"], col = "blue",lwd=2)
-legend('topleft',legend = unique(df$sexo.nombre),col=c("blue", "red"),pch=1)
-
-#-╔═════════════════╗
-#-║ Fin del script! ║
-#-║ Atte.           ║
-#-║ El profesor     ║
-#-╚═════════════════╝

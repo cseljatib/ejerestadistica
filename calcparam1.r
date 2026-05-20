@@ -30,9 +30,8 @@ mu.x
 ##- Compare el resultado anterior con
 mean(x)
 
-
-#╔═════════════════╗
-#║ Fin del script! ║
-#║ Atte.           ║
-#║ El profesor     ║
-#╚═════════════════╝
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el ejemplo! ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝

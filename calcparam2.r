@@ -59,9 +59,9 @@ sort.x[pos.mediana]
 ##+compare el resultado anterior con
 median(x)
 
-message("Fin del script!")
-#╔═════════════════╗
-#║ Fin del script! ║
-#║ Atte.           ║
-#║ El profesor     ║
-#╚═════════════════╝
+
+#*╔═════════════════╗
+#*║ Fin del script! ║
+#*║ Atte.           ║
+#*║ El profesor     ║
+#*╚═════════════════╝

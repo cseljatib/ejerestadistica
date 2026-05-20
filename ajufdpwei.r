@@ -171,8 +171,8 @@ legend("topright",c("Observada","Fdp de Weibull"),
 
 message("Si ves este mensaje, estamos OK!!")
 
-#╔══════════════════════╗
-#║ Estimad@ estudiante: ║
-#║ DisfRute el ejemplo! ║
-#║ El profesor     ╔════╝
-#╚═════════════════╝
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el ejemplo! ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝

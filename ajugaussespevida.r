@@ -180,10 +180,8 @@ legend("topleft",c("Observada","Fdp de Gauss"),
        lty = c(1,1))#, pch=c(NULL,1))
 
 
-message("Si ves este mensaje, estamos OK!!")
-
-#╔══════════════════════╗
-#║ Estimad@ estudiante: ║
-#║ DisfRute el ejemplo! ║
-#║ El profesor     ╔════╝
-#╚═════════════════╝
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el ejemplo! ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝

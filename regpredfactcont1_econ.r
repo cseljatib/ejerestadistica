@@ -1,10 +1,13 @@
 ##!╔═══════════════════════════════════════════════════════════════╗
 ##*║ Script academico                                              ║
 ##+║ Sobre: Modelo de regresion con dos variable predictoras: una  ║
-## ║  categorica o factor, y la otra continua.                     ║
+## ║  categorica (o factor) y la otra continua.                    ║
 ##-║ Detalles:  La variable respuesta es continua.                 ║
-##-║ Mas detalles:  Ajuste del modelo con variable dummy como      ║
-## ║  predictor.                                                   ║
+##-║ Mas detalles:  Se ajustan modelos con variables predictoras:  ║
+## ║ * (1) solo un factor; (2) solo una variable continua          ║
+## ║ * (3) un factor y una variable continua                       ║
+## ║ * Es fundamental aca demostrar el concepto de la variable     ║
+## ║ dummy o indicadora.                                           ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de ingreso total corregido segun               ║
 ##*║ encuesta (casen).                                             ║
@@ -14,6 +17,7 @@
 ##+║ E-mail: christian.salas AT uchile DOT cl                      ║
 ##*║ Web: https://eljatib.com                                      ║
 ##!╚═══════════════════════════════════════════════════════════════╝
+
 
 ##- ===================================
 ##! I. Datos para ejemplo
@@ -53,10 +57,10 @@ str(df)
 sum(table(df$comuna)) == nrow(df) # Tiene que coincidir
 
 
-##? variable aleatoria de interes: la edad
+##? Variable aleatoria de interes: la edad
 df$vary<-df$ytotcor
 
-##! grafico de distribucion
+##* Grafico de distribucion
 boxplot(df$vary)
 
 hist(df$vary)
@@ -65,15 +69,15 @@ library(lattice)
 histogram(~vary,data=df)
 
 
-##* todo junto
+##* Todo junto
 histbxp(df$vary,varlab = "Ingreso total ($/mes)")
 
-##! Estadistica descriptiva
+##* Estadistica descriptiva
 descstat(data=df,y=c("vary"))
 descstat(data=df,y=c("vary"),full = TRUE,eng=FALSE)
 
 
-##! analizemos una variable categorica
+##* Analizar una variable categorica
 table(df$sexo)
 ##creando una nueva variable
 extractLeft("1. Hombre",1)
@@ -128,7 +132,7 @@ predstat(obs=df$vary,pre=fitted(m1),want.percent = T)
 
 
 ##- ===================================
-##! IV. Ajuste de modelo 2 -- Una variable continua como predictor
+##! III. Ajuste de modelo 2 -- Una variable continua como predictor
 ##- ===================================
 ##+ Primer modelo, solo la edad como predictor
 m2 <- lm(vary ~ edad, data=df)
@@ -148,7 +152,6 @@ predstat(obs=df$vary,pre=fitted(m2),want.percent = T)
 
 ##+ Cuadro "analisis de varianza del modelo ajustado"
 anova(m2)
-
 
 
 ##- ===================================
@@ -216,11 +219,14 @@ coef["edad"], col = "blue")
 legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
 
 
-## que le parecen los valores esperados para cada nivel en relacion
-## a la dispersion de los datos observados.
+##? ================================================================
+## Tarea/preguntas:
+## 1. Que le parecen los valores esperados para cada nivel del
+## factor en relacion a la dispersion de los datos observados?.
+##? ================================================================
 
-#-╔═════════════════╗
-#-║ Fin del script! ║
-#-║ Atte.           ║
-#-║ El profesor     ║
-#-╚═════════════════╝
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el ejemplo! ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝

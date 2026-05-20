@@ -9,6 +9,8 @@
 ## ║ * (4 y 5) dos variantes mas del modelo (3)                    ║
 ## ║ * Es fundamental aca demostrar que hay varias formas en que   ║
 ## ║ una variable factor pueden ser incorporadas en un modelo.     ║
+## ║ * Ademas, se comparan los modelos anteriores con el mejor     ║
+## ║ modelo de RLM previamente propuesto en un ejercicio anterior. ║
 ## ║                                                               ║
 ##*║ Ejemplo: Datos de la variable "peso" (biomasa) de osos en     ║
 ##*║ Norteamerica (bearscomp2)                                     ║
@@ -203,10 +205,10 @@ legend('topright',levels(df$sexo.nombre),col=col.list,pch=1)
 ##Note que en el modelo anteriormente ajustado, lo que cambia entre
 ## los niveles del factor es el intercepto.
 
-##- ===================================
+##- =============================================================
 ##! V. Otras variantes empleando las mismas variables predictoras
 ## que el modelo anterior
-##- ===================================
+##- =============================================================
 
 ##- ===================================
 ##! a) El modelo anterior (m3), es una variante del modelo que
@@ -215,10 +217,10 @@ legend('topright',levels(df$sexo.nombre),col=col.list,pch=1)
 ## cual se obtiene el valor esperado.
 ##- ===================================
 
-##- ===================================
+##- ============================================================
 ##! b) Ajuste de modelo con pendientes diferentes entre niveles
 ## del factor
-##- ===================================
+##- ============================================================
 ##+ recuerde, las variables predictoras son: Edad y el factor "Sexo.Nombre"
 m3b <- lm(vary ~ edad:sexo.nombre, data=df)
 summary(m3b)
@@ -254,12 +256,10 @@ anova(m2,m3b)
 ##! Comparacion de SCE de ambos modelos con mismo numero de parametros
 anova(m3,m3b)
 
-
-
-##- ===================================
+##- =================================================================
 ##! b) Ajuste de modelo con interceptos y pendientes diferentes entre
 ## niveles del factor
-##- ===================================
+##- =================================================================
 ##+ recuerde, las variables predictoras son: Edad y el factor "Sexo.Nombre"
 m3c <- lm(vary ~ edad*sexo.nombre, data=df)
 summary(m3c)
@@ -291,7 +291,7 @@ summary(m3c)
 ##! test de F-parcial
 anova(m2,m3b,m3c)
 
-
+anova(m3,m3b)
 
 ##+======================================================
 ##! Grafico de comportamiento para modelo con interceptos y
@@ -306,11 +306,98 @@ coef["edad"], col = "blue",lwd=2)
 legend('topleft',levels(df$sexo.nombre),col=col.list,pch=1)
 
 
+##- =============================================================
+##! VI. Nuestro "mejor" modelo de RLM hasta ahora, ver ejercicios
+## anteriores, pero solo con variables predictoras continuas
+##- =============================================================
+
+m4 <- lm(vary~edad+pechoP, data=df)
+summary(m4)
+
+##* test de F-parcial (tiene sentido aca? ojo!!)
+anova(m4,m3c)
+
+##* Estadisticos predictivos del modelo
+predstat(obs=df$vary,pre=fitted(m4),want.percent = T)
+
+##- =========================================================
+##! VII. Nuevo modelo: el "hasta ahora mejor" modelo de dos
+## predictores continuos pero incluyendo al factor en estudio
+##- ==========================================================
+
+##+ Variante con interceptos distintos entre niveles del factor
+m5 <- lm(vary~edad+pechoP+sexo.nombre, data=df)
+summary(m5)
+
+##* test de F-parcial
+anova(m4,m5)
+
+##* Estadisticos predictivos del modelo
+predstat(obs=df$vary,pre=fitted(m5),want.percent = T)
+
+##+ Variantes con pendientes distintos entre niveles del factor
+##- (a) en la edad
+m6a <- lm(vary~edad:sexo.nombre+pechoP, data=df)
+summary(m6a)
+
+##* test de F-parcial
+anova(m4,m6a)
+
+##* comparando la Suma cuadrado del error de variantes de modelos
+## con un predictor factor
+anova(m5,m6a)
+
+##(b) en el perimetro del pecho
+m6b <- lm(vary~edad+pechoP:sexo.nombre, data=df)
+summary(m6b)
+
+##* test de F-parcial
+anova(m4,m6b)
+
+
+##* Estadisticos predictivos de estos dos ultimos modelos
+predstat(obs=df$vary,pre=fitted(m6a),want.percent = T)
+predstat(obs=df$vary,pre=fitted(m6b),want.percent = T)
+
+##* comparando la Suma cuadrado del error de variantes de modelos
+## con un predictor factor
+anova(m5,m6b)
+
+
+##+ Variante con pendientes distintos entre niveles del factor
+##-  en ambas variables predictoras
+m7 <- lm(vary~edad:sexo.nombre+pechoP:sexo.nombre, data=df)
+summary(m7)
+
+##* test de F-parcial
+anova(m4,m6a,m7)
+anova(m4,m6b,m7)
+
+##+ Variante con pendientes distintos entre niveles del factor
+##-  en ambas variables predictoras
+m8 <- lm(vary~sexo.nombre+edad:sexo.nombre+pechoP:sexo.nombre, data=df)
+summary(m8)
+
+##* test de F-parcial
+anova(m4,m6a,m7,m8)
+anova(m4,m6b,m7,m8)
+
+
+##* Estadisticos predictivos de estos dos ultimos modelos
+predstat(obs=df$vary,pre=fitted(m7),want.percent = T)
+predstat(obs=df$vary,pre=fitted(m8),want.percent = T)
+
+
 ##? ================================================================
 ## Tarea/preguntas:
 ## 1. en que se parecen los modelos m3 y m3b?
 ## 2. en que se diferencian los modelos m3 y m3b, con respecto al
-## modelo m3c
+## modelo m3c?
+## 3. en que se diferencian los modelos m6a y m6b, con respecto al
+## modelo m5?
+## 4. en que se diferencian los modelos m7 y m8, con respecto al
+## modelo m6a?
+## 5. Cual modelo selecciona como el mejor? Fundamente
 ##? ================================================================
 
 

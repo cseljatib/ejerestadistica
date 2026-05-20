@@ -135,9 +135,9 @@ py2
 100*(1-py2)
 
 
-message("Aca termina el script!")
-#╔══════════════════════╗
-#║ Estimad@ estudiante: ║
-#║ DisfRute el script!  ║
-#║ El profesor     ╔════╝
-#╚═════════════════╝
+
+#*╔══════════════════════╗
+#*║ Estimad@ estudiante: ║
+#*║ DisfRute el script!  ║
+#*║ El profesor     ╔════╝
+#*╚═════════════════╝

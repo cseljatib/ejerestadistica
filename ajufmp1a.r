@@ -79,9 +79,8 @@ legend("topright",c("Observada","Fdp de Poisson"),
 ##Tarea: comparar con el estimador
 ## de los momentos.
 
-#@@@@@@@@@@@@@@@@@
-#eso es todo estimad@s alumn@s
-#disfRuten!
-#saludos
-#C
-#@@@@@@@@@@@@@@@@@
+#*╔══════════════════════════════════╗
+#*║ Eso es todo estimad@ estudiante: ║
+#*║ disfRute la estadistica!         ║
+#*║ El profesor                 ╔════╝
+#*╚═════════════════════════════╝
