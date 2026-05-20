@@ -180,12 +180,12 @@ anova(m2,m3)
 ##! Grafico de comportamiento para este modelo
 ##+======================================================
 coef <- coefficients(m3)
-plot(df$edad, df$vary, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años)")
-abline(coef["(Intercept)"] + coef["sexoMujer"],
+plot(df$edad, df$vary, ylab="Peso (kg)", xlab="Edad (años)")
+abline(coef["(Intercept)"] + coef["sexo.nombreHembra"],
 coef["edad"], col = "red")
 abline(coef["(Intercept)"],
-coef["edad"], col = "blue")
-legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
+       coef["edad"], col = "blue")
+legend('topleft',legend = unique(df$sexo.nombre),col=c("blue", "red"),pch=1)
 
 
 
@@ -193,7 +193,7 @@ legend('topright',unique(df$sexo),col=unique(col.list),pch=1)
 ##! V. Ajuste de modelo 3b -- otra variante (varpred continua y factor)
 ##- ===================================
 ##+ Otra variante: Edad y el factor "Sexo" como predictores
-m3b <- lm(vary ~ edad:sexo, data=df)
+m3b <- lm(vary ~ edad:sexo.nombre, data=df)
 summary(m3b)
 
 
@@ -224,7 +224,7 @@ anova(m2,m3b)
 
 
 ##+ Ultima variante: Edad y el factor "Sexo" como predictores
-m3c <- lm(vary ~ edad*sexo, data=df)
+m3c <- lm(vary ~ edad*sexo.nombre, data=df)
 summary(m3c)
 
 
@@ -254,12 +254,12 @@ summary(m3c)
 anova(m2,m3c)
 
 coef <- coefficients(m3c)
-plot(vary~edad, data=df, col=col.list, ylab="Ingreso ($/mes)", xlab="Edad (años)")
-abline(coef["(Intercept)"] + coef["sexoMujer"],
-coef["edad"]+coef["edad:sexoMujer"], col = "red",lwd=4)
+plot(vary~edad, data=df, ylab="Peso (kg)", xlab="Edad (años)")
+abline(coef["(Intercept)"] + coef["sexo.nombreHembra"],
+coef["edad"]+coef["edad:sexo.nombreHembra"], col = "red",lwd=4)
 abline(coef["(Intercept)"],
 coef["edad"], col = "blue",lwd=2)
-legend('topleft',unique(df$sexo),col=unique(col.list),pch=1)
+legend('topleft',legend = unique(df$sexo.nombre),col=c("blue", "red"),pch=1)
 
 #-╔═════════════════╗
 #-║ Fin del script! ║
