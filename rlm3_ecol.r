@@ -78,16 +78,16 @@ dev.off()
 ##+## III. Ajuste de modelos
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ##+ Primer modelo, uno de reg. lineal simple
-m1.osos <- lm(peso~edad, data=df)
-summary(m1.osos)
+m1 <- lm(peso~edad, data=df)
+summary(m1)
 
 ##+ Segundo modelo, uno de reg. lineal multiple
-m2.osos <- lm(peso~edad+largo, data=df)
-summary(m2.osos)
+m2 <- lm(peso~edad+largo, data=df)
+summary(m2)
 
 ##+ Tercer modelo, uno de reg. lineal multiple
-m3.osos <- lm(peso~edad+largo+pechoP, data=df)
-summary(m3.osos)
+m3 <- lm(peso~edad+largo+pechoP, data=df)
+summary(m3)
 
 
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -101,7 +101,7 @@ summary(m3.osos)
 ##+que dependen de una variable. 
 ##! En nuestro caso corresponde al modelo 1
 plot(peso~edad,data=df)
-abline(m1.osos, col="red", lwd=2)
+abline(m1, col="red", lwd=2)
 
 ##- ============================================= 
 ##* 2) Grafico entre valor observado y el valor ajustado
@@ -109,9 +109,9 @@ abline(m1.osos, col="red", lwd=2)
 ##+ Este tipo de grafico es posible para todo tipo de modelos
 
 ##! Guardando los valores ajustados 
-df$yaju.1 <- fitted(m1.osos)
-df$yaju.2 <- fitted(m2.osos)
-df$yaju.3 <- fitted(m3.osos)
+df$yaju.1 <- fitted(m1)
+df$yaju.2 <- fitted(m2)
+df$yaju.3 <- fitted(m3)
 min.x<-min(df$yaju.1,df$yaju.2,df$yaju.3,df$peso);min.x
 max.x<-max(df$yaju.1,df$yaju.2,df$yaju.3,df$peso);max.x
 xlim.h<-c(min.x,max.x)
@@ -142,20 +142,20 @@ abline(0,1, col="blue", lwd=2, lty=2)
 ##!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 ##- Modelo 1, compare ambas salidas
-summary(m1.osos)
-anova(m1.osos)
+summary(m1)
+anova(m1)
 
 ##? hay elementos comunes en ambas? cuales?
 
 ##- Modelo 2, compare ambas salidas
-summary(m2.osos)
-anova(m2.osos)
+summary(m2)
+anova(m2)
 
 ##? hay elementos comunes en ambas? cuales?
 
 ##- Modelo 3, compare ambas salidas
-summary(m3.osos)
-anova(m3.osos)
+summary(m3)
+anova(m3)
 
 ##? hay elementos comunes en ambas? cuales?
 
