@@ -2,9 +2,8 @@
 ##*║ Script academico                                               ║
 ##+║ Sobre:  Intervalo de confianza para muestreo aleatorio simple  ║
 ##-║ Detalles: Realiza un muestreo aleatorio simple sobre una       ║
-##-║ poblacion para calcular estadigrafos (i.e., estadisticos) e    ║
-## ║ intervalo de confianza estadistico del estimador del           ║
-## ║ parametro de la media.                                         ║
+##-║  poblacion para calcular estadisticos e intervalo de confianza ║
+## ║  estadistico del estimador del parametro de la media.          ║
 ##!║ Ejemplo: Datos de ingreso per capita por pais.                 ║
 ##-║-----------------------------------------------------------     ║
 ## ║                                                                ║
