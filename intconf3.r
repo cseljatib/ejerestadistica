@@ -159,9 +159,6 @@ param.p
 
 ##-------------
 ##!2) Varianza muestral
-
-sum((y-m.y)^2)/(n-1)
-var(y)
 #tambien se puede calcular como
 v.y<-param.p.hat*(1-param.p.hat)
 v.y
@@ -180,7 +177,7 @@ f<-n/N
 f
 (1-f)
 
-sqrt( (v.y/n) * (1-f) )
+
 se.phat<-sqrt( (v.y/n) * (1-f) )
 se.phat
 ##!Error estandar del estimador, en %
