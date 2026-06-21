@@ -72,8 +72,8 @@ candi.binoneg
 ##-================================================
 ##! (1) Modelo de Fmp de Poisson
 optim.loglik.pois<-optim(c(candi.pois[1]),loglike.pois,data=df$y)
-
 optim.loglik.pois
+
 #+ guardando parametros estimados de la funcion ajustada
 lambda.mle<-optim.loglik.pois$par
 lambda.mle
